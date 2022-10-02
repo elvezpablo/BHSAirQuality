@@ -7,10 +7,18 @@ import {
   SimpleGrid,
   Container,
   NativeSelect,
+  Grid,
+  Stack,
 } from '@mantine/core';
-import { SensorLocation, SensorData, SensorType, Sensors } from './src/types';
+import { SensorLocation, SensorData, SensorType, Sensors } from './types';
 
 import Sensor from './components/Sensor';
+import {
+  getCO2Color,
+  getHumidityColor,
+  getTempColor,
+  getVOCColor,
+} from './colors';
 
 const SCHOOL = 'c62e0d42341740bfbd3bb321154219df';
 const API_KEY = '2dda18d0-f7e8-486e-903d-eebf831a9bf0';
@@ -130,22 +138,41 @@ export default function App() {
             const data = sensorDataMap ? sensorDataMap.get(s.mac) : undefined;
 
             return (
-              <div className="room" key={s.id}>
-                <Title order={5}>{s.description}</Title>
+              <div style={{ border: '1px solid #333' }} key={s.id}>
+                <Title order={4}>{s.description}</Title>
+
                 {data && (
-                  <Fragment>
-                    <div>
-                      <strong>Temp</strong>:{' '}
-                      {Math.round(data.get('TFAHRENHEIT').data)}&deg;F
-                    </div>
-                    <div>
-                      <strong>VOC</strong>: {data.get('VOC').data}
-                    </div>
-                    <div>
-                      <strong>RH</strong>: {Math.round(data.get('RH').data)}%
-                    </div>
-                    <Sensor data={data.get('CO2')} />
-                  </Fragment>
+                  <div>
+                    <Sensor
+                      label={<span>Temp</span>}
+                      data={data.get('TFAHRENHEIT')}
+                      getColor={getTempColor}
+                      units={'˚F'}
+                    />
+                    <Sensor
+                      label={<span>VOC</span>}
+                      data={data.get('VOC')}
+                      getColor={getVOCColor}
+                      units={'%'}
+                    />
+
+                    <Sensor
+                      label={<span>Humidity</span>}
+                      data={data.get('RH')}
+                      getColor={getHumidityColor}
+                      units={'%'}
+                    />
+                    <Sensor
+                      label={
+                        <span>
+                          CO<sub>2</sub>
+                        </span>
+                      }
+                      data={data.get('CO2')}
+                      getColor={getCO2Color}
+                      units={'ppm'}
+                    />
+                  </div>
                 )}
               </div>
             );

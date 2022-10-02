@@ -9,8 +9,8 @@ import {
   NativeSelect,
 } from '@mantine/core';
 import { SensorLocation, SensorData, SensorType, Sensors } from './src/types';
-import './style.css';
-import CO2 from './src/components/CO2';
+
+import Sensor from './components/Sensor';
 
 const SCHOOL = 'c62e0d42341740bfbd3bb321154219df';
 const API_KEY = '2dda18d0-f7e8-486e-903d-eebf831a9bf0';
@@ -144,7 +144,7 @@ export default function App() {
                     <div>
                       <strong>RH</strong>: {Math.round(data.get('RH').data)}%
                     </div>
-                    <CO2 data={data.get('CO2')} />
+                    <Sensor data={data.get('CO2')} />
                   </Fragment>
                 )}
               </div>

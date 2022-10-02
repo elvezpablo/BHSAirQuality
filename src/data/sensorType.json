@@ -1,0 +1,1311 @@
+[
+  {
+    "charCode": "CSW",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "a814e59caf4803e53ec87399b40004d8",
+    "label": "Control Switch",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 17,
+    "units": "Event"
+  },
+  {
+    "charCode": "THETA",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c0035bd",
+    "label": "Theta",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 21,
+    "units": "Index"
+  },
+  {
+    "charCode": "MOLD",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c0026d9",
+    "label": "Mold Index",
+    "rank": 0,
+    "sensorColor": "0x0969A3",
+    "sensorGasFormula": "",
+    "type": 22,
+    "units": "Index"
+  },
+  {
+    "charCode": "RATING",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c00290d",
+    "label": "Building Rating",
+    "rank": 0,
+    "sensorColor": "0x25D500",
+    "sensorGasFormula": "",
+    "type": 23,
+    "units": "Index"
+  },
+  {
+    "charCode": "HEAT",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "6db2b8b1fb8dcd6ca073ac9d8f001c73",
+    "label": "Heat Index",
+    "rank": 0,
+    "sensorColor": "0xE60000",
+    "sensorGasFormula": "",
+    "type": 24,
+    "units": "Index"
+  },
+  {
+    "charCode": "PMC1.0",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e0016d1",
+    "label": "PM 1.0 concentration (ug/m^3)",
+    "rank": 60,
+    "sensorColor": "0x7F093E",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 5,
+          "min": 0,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 1.0 as much as possible",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 10,
+          "min": 5,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 1.0 as much as possible",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 2000,
+          "min": 10,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 1.0 as much as possible.",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://standard.wellcertified.com/air/air-quality-standards",
+        "https://www.canada.ca/en/health-canada/services/air-quality/residential-indoor-air-quality-guidelines.html#a1",
+        "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidance-cleaner-air-spaces-during-wildfire-smoke-events.html#a3.1"
+      ]
+    },
+    "type": 32,
+    "units": "µg/m³"
+  },
+  {
+    "charCode": "PMC2.5",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e00220e",
+    "label": "PM 2.5 concentration (ug/m^3)",
+    "rank": 59,
+    "sensorColor": "0xFF7BB6",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 15,
+          "min": 0,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 2.5 as much as possible",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 35,
+          "min": 15,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 2.5 as much as possible",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 2000,
+          "min": 35,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 2.5 as much as possible.",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://standard.wellcertified.com/air/air-quality-standards",
+        "https://www.canada.ca/en/health-canada/services/air-quality/residential-indoor-air-quality-guidelines.html#a1",
+        "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidance-cleaner-air-spaces-during-wildfire-smoke-events.html#a3.1"
+      ]
+    },
+    "type": 33,
+    "units": "µg/m³"
+  },
+  {
+    "charCode": "PMC10",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e002315",
+    "label": "PM 10 concentration (ug/m^3)",
+    "rank": 58,
+    "sensorColor": "0xFF117B",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 50,
+          "min": 0,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 10.0 as much as possible",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 150,
+          "min": 50,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 10.0 as much as possible",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 2000,
+          "min": 150,
+          "recommendation": "Many of our research sources recommend reducing exposure to PM 10.0 as much as possible.",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://standard.wellcertified.com/air/air-quality-standards",
+        "https://www.canada.ca/en/health-canada/services/air-quality/residential-indoor-air-quality-guidelines.html#a1",
+        "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidance-cleaner-air-spaces-during-wildfire-smoke-events.html#a3.1",
+        "https://www.epa.gov/criteria-air-pollutants/naaqs-table"
+      ]
+    },
+    "type": 34,
+    "units": "µg/m³"
+  },
+  {
+    "charCode": "PM 0.3",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e002e88",
+    "label": "> 0.3μm particle count in 0.1L volume",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 35,
+    "units": "count"
+  },
+  {
+    "charCode": "PM 0.5",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e003b7d",
+    "label": "> 0.5µm particle count in 0.1L volume",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 36,
+    "units": "count"
+  },
+  {
+    "charCode": "PM 1",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e004ab9",
+    "label": "> 1.0µm particle count in 0.1L volume",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 37,
+    "units": "count"
+  },
+  {
+    "charCode": "PM 2.5",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e004e01",
+    "label": "> 2.5µm particle count in 0.1L volume",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 38,
+    "units": "count"
+  },
+  {
+    "charCode": "PM 5",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e005026",
+    "label": "> 5.0µm particle count in 0.1L volume",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 39,
+    "units": "count"
+  },
+  {
+    "charCode": "PM 10",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "5aca4aa68c5f38af9aca5fdb0e00531d",
+    "label": "> 10.0µm particle count in 0.1L volume",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 40,
+    "units": "count"
+  },
+  {
+    "charCode": "MRT",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7674288611e1d49f17d42531cf000fb4",
+    "label": "Mean Radiant Temperature",
+    "rank": 0,
+    "sensorColor": "0x0A0A72",
+    "sensorGasFormula": "",
+    "type": 41,
+    "units": "°C"
+  },
+  {
+    "charCode": "SPLdB",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "3fbf9c9221dee95c9103c3a574000985",
+    "label": "Sound Pressure in dB",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 42,
+    "units": "dB"
+  },
+  {
+    "charCode": "SPLdB",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7674288611e1d49f17d42531cf0012d8",
+    "label": "Sound Pressure in dB",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 42,
+    "units": "dB"
+  },
+  {
+    "charCode": "BV",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "3fbf9c9221dee95c9103c3a5740017a3",
+    "label": "Battery Voltage",
+    "rank": 0,
+    "sensorColor": "0xFFFF00",
+    "sensorGasFormula": "",
+    "type": 45,
+    "units": "Volts"
+  },
+  {
+    "charCode": "SPM",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c001200",
+    "label": "Solar Panel Voltage",
+    "rank": 0,
+    "sensorColor": "0xFFFF00",
+    "sensorGasFormula": "",
+    "type": 46,
+    "units": "Volts"
+  },
+  {
+    "charCode": "O3",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c005402",
+    "label": "Ozone",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "O3",
+    "type": 48,
+    "units": "ppb or ppm"
+  },
+  {
+    "charCode": "SPLZA",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "4e473d5dd224ac6470b1385742003b3c",
+    "label": "Time Averaged SPL",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 49,
+    "units": "dB"
+  },
+  {
+    "charCode": "PeakSPL",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "3530f36452f568c8a42684b65b000356",
+    "label": "PeakSPL",
+    "rank": 0,
+    "sensorColor": "0x520CE8",
+    "sensorGasFormula": "",
+    "type": 50,
+    "units": "dB"
+  },
+  {
+    "charCode": "Audio",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "3fbf9c9221dee95c9103c3a5740030d0",
+    "label": "Audio",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 51,
+    "units": ""
+  },
+  {
+    "charCode": "CO",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c0041f4",
+    "label": "Carbon Monoxide",
+    "rank": 0,
+    "sensorColor": "0x0969A3",
+    "sensorGasFormula": "CO",
+    "type": 64,
+    "units": "ppm"
+  },
+  {
+    "charCode": "LAT",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "26331f372a4d1e180d63af2a5d00297c",
+    "label": "Latitude",
+    "rank": 0,
+    "sensorColor": "0x46be8e",
+    "sensorGasFormula": "",
+    "type": 70,
+    "units": "deg"
+  },
+  {
+    "charCode": "LON",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "26331f372a4d1e180d63af2a5d002e2c",
+    "label": "Longitude",
+    "rank": 0,
+    "sensorColor": "0x3a936f",
+    "sensorGasFormula": "",
+    "type": 71,
+    "units": "deg"
+  },
+  {
+    "charCode": "ALT",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "26331f372a4d1e180d63af2a5d003b19",
+    "label": "Altitude",
+    "rank": 0,
+    "sensorColor": "0x55e2aa",
+    "sensorGasFormula": "",
+    "type": 72,
+    "units": "m"
+  },
+  {
+    "charCode": "NO2",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c0058e1",
+    "label": "Nitrogen Dioxide",
+    "rank": 0,
+    "sensorColor": "0x25D500",
+    "sensorGasFormula": "NO2",
+    "type": 80,
+    "units": "ppm"
+  },
+  {
+    "charCode": "VOC",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c006e95",
+    "label": "Volatile Organic Compounds",
+    "rank": 70,
+    "sensorColor": "0xE8FFB1",
+    "sensorGasFormula": "C6H6",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 100,
+          "min": 0,
+          "recommendation": "Most sources agree that not all VOCs are immediately harmful, but that some VOCs can cause or excacerbate health problems. It's best to minimize exposure to VOCs as much as possible.",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 500,
+          "min": 100,
+          "recommendation": "Most sources agree that not all VOCs are immediately harmful, but that some VOCs can cause or excacerbate health problems. Your levels of tVOCs are relatively high, you should to try and introduce clean air and reduce the levels.",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 2000,
+          "min": 500,
+          "recommendation": "Most sources agree that not all VOCs are immediately harmful, but that some VOCs can cause or excacerbate health problems. Your levels of tVOCs are high, you should to try and introduce clean air and reduce the levels.",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://standard.wellcertified.com/air/air-quality-standards",
+        "https://www.lung.org/clean-air/at-home/indoor-air-pollutants/volatile-organic-compounds",
+        "https://www.canada.ca/en/health-canada/services/publications/healthy-living/indoor-air-reference-levels-chronic-exposure-volatile-organic-compounds.html"
+      ]
+    },
+    "type": 96,
+    "units": "ppm/ppb"
+  },
+  {
+    "charCode": "PSI",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc0006c2",
+    "label": "Pressure PSI",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 97,
+    "units": "PSI"
+  },
+  {
+    "charCode": "Pa",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "6db2b8b1fb8dcd6ca073ac9d8f0022fb",
+    "label": "Differential Pressure",
+    "rank": 0,
+    "sensorColor": "0x207F60",
+    "sensorGasFormula": "",
+    "type": 99,
+    "units": "Pa"
+  },
+  {
+    "charCode": "PERC",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c007ef6",
+    "label": "Tetrachloroethylene",
+    "rank": 0,
+    "sensorColor": "0x188A00",
+    "sensorGasFormula": "C2Cl4",
+    "type": 112
+  },
+  {
+    "charCode": "BASAL_LUX_A",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc000b2b",
+    "label": "Basal lux measurement A",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 113,
+    "units": "lux"
+  },
+  {
+    "charCode": "BASAL_LUX_B",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc0019e5",
+    "label": "Basal lux measurement B",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 114,
+    "units": "lux"
+  },
+  {
+    "charCode": "SENSE_LUX_A",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc001c36",
+    "label": "Sense VIS LED Channel A",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 50,
+          "min": 0,
+          "recommendation": "",
+          "strokeStyle": "red"
+        },
+        {
+          "max": 150,
+          "min": 50,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 1200,
+          "min": 150,
+          "recommendation": "",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 2000,
+          "min": 1200,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 10000,
+          "min": 2000,
+          "recommendation": "",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://sustainabilityworkshop.venturewell.org/buildings/measuring-light-levels.html",
+        "https://www.gsa.gov/node/82715"
+      ]
+    },
+    "type": 115,
+    "units": "lux"
+  },
+  {
+    "charCode": "SENSE_LUX_B",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc00298d",
+    "label": "Sense VIS LED Channel B",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 116
+  },
+  {
+    "charCode": "DIFF_LUX_A",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc002c72",
+    "label": "VIS Lux Diff Channel A",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 117
+  },
+  {
+    "charCode": "DIFF_LUX_B",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc003357",
+    "label": "VIS Lux Diff Channel B",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 118
+  },
+  {
+    "charCode": "SENSE_IR_LUX_A",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc004b0e",
+    "label": "Sense IR LED Channel A",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 119
+  },
+  {
+    "charCode": "SENSE_IR_LUX_B",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc004e90",
+    "label": "Sense IR LED Channel B",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 120
+  },
+  {
+    "charCode": "DIFF_IR_LUX_A",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc005a22",
+    "label": "IR Lux Diff Channel A",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 121
+  },
+  {
+    "charCode": "DIFF_IR_LUX_B",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc0067d5",
+    "label": "IR Lux Diff Channel B",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 122
+  },
+  {
+    "charCode": "BASAL_IR_LUM_A",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc00728e",
+    "label": "Basal IR luminosity A",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 123
+  },
+  {
+    "charCode": "BASAL_IR_LUM_B",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc007a34",
+    "label": "Basal IR luminosity B",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 124
+  },
+  {
+    "charCode": "DUST_CONC",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc004026",
+    "label": "Estimated dust accumulation",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 127
+  },
+  {
+    "charCode": "CH4",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c008b87",
+    "label": "Methane",
+    "rank": 0,
+    "sensorColor": "0x207F60",
+    "sensorGasFormula": "CH4",
+    "type": 130,
+    "units": "ppm"
+  },
+  {
+    "charCode": "RAD",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "59fa4375ad1d50fdf9f2d491fc00050e",
+    "label": "Radiation",
+    "rank": 0,
+    "sensorColor": "0x00AA72",
+    "sensorGasFormula": "",
+    "type": 136,
+    "units": "cpm"
+  },
+  {
+    "charCode": "NH3",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c008fa9",
+    "label": "Ammonia",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "NH3",
+    "type": 144,
+    "units": "ppm"
+  },
+  {
+    "charCode": "NH3_LOW",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c009433",
+    "label": "Ammonia",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "NH3",
+    "type": 145
+  },
+  {
+    "charCode": "HC12",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c0098a3",
+    "label": "HC12",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "HC12",
+    "type": 160
+  },
+  {
+    "charCode": "SO2",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c009b9f",
+    "label": "Sulphur Dioxide",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "SO2",
+    "type": 176,
+    "units": "ppm"
+  },
+  {
+    "charCode": "SO2_HIGH",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c00a754",
+    "label": "Sulphur Dioxide",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "SO2",
+    "type": 178,
+    "units": "ppm"
+  },
+  {
+    "charCode": "CO2",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "3364b625cbc1a6f6bce11342f2007d20",
+    "label": "Carbon Dioxide 2",
+    "rank": 0,
+    "sensorColor": "0xFF9667",
+    "sensorGasFormula": "CO2",
+    "type": 180,
+    "units": "ppm"
+  },
+  {
+    "charCode": "CO2",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c00bed7",
+    "label": "Carbon Dioxide",
+    "rangeHint": {
+      "max": 10000,
+      "midPoint": 5150,
+      "min": 300,
+      "step": 1
+    },
+    "rank": 80,
+    "sensorColor": "0xFF5407",
+    "sensorGasFormula": "CO2",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 390,
+          "min": 0,
+          "strokeStyle": "noinfo"
+        },
+        {
+          "max": 650,
+          "min": 390,
+          "strokeStyle": "green"
+        },
+        {
+          "max": 1000,
+          "min": 650,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 10000,
+          "min": 1000,
+          "recommendation": "",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://newscenter.lbl.gov/2012/10/17/elevated-indoor-carbon-dioxide-impairs-decision-making-performance/",
+        "https://www.canada.ca/en/health-canada/programs/consultation-residential-indoor-air-quality-guidelines-carbon-dioxide/document.html#a6.2"
+      ]
+    },
+    "type": 181,
+    "units": "ppm"
+  },
+  {
+    "charCode": "CO2E",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "dff9589c86cb14da0cb31fd918002255",
+    "label": "Carbon Dioxide Equivalent",
+    "rank": 0,
+    "sensorColor": "0x35D4A0",
+    "sensorGasFormula": "CO2",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 390,
+          "min": 0,
+          "strokeStyle": "noinfo"
+        },
+        {
+          "max": 650,
+          "min": 390,
+          "strokeStyle": "green"
+        },
+        {
+          "max": 1000,
+          "min": 650,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 10000,
+          "min": 1000,
+          "recommendation": "",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://newscenter.lbl.gov/2012/10/17/elevated-indoor-carbon-dioxide-impairs-decision-making-performance/",
+        "https://www.canada.ca/en/health-canada/programs/consultation-residential-indoor-air-quality-guidelines-carbon-dioxide/document.html#a6.2"
+      ]
+    },
+    "type": 182,
+    "units": "ppm"
+  },
+  {
+    "charCode": "IPA",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c00cabf",
+    "label": "Isopropyl Alcohol",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "C3H8O",
+    "type": 186
+  },
+  {
+    "charCode": "ETAC",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c00d596",
+    "label": "Ethyl Acetate",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "C4H8O2",
+    "type": 197
+  },
+  {
+    "charCode": "H2",
+    "charting": false,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c00e101",
+    "label": "Hydrogen",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "H2",
+    "type": 202,
+    "units": "ppm"
+  },
+  {
+    "charCode": "PM",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": true,
+    "id": "7b58acdb2cf98a4ad9747fb47c00fdd9",
+    "label": "Particulate Matter Index",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "PM",
+    "type": 217
+  },
+  {
+    "charCode": "WS",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c00ffd4",
+    "label": "Wind Speed",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "",
+    "type": 218,
+    "units": "m/s"
+  },
+  {
+    "charCode": "WD",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c010515",
+    "label": "Wind Direction",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "",
+    "type": 219,
+    "units": "cardial direction"
+  },
+  {
+    "charCode": "IBT",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c010a8b",
+    "label": "Internal Case Temp",
+    "rank": 0,
+    "sensorColor": "0x0",
+    "sensorGasFormula": "",
+    "type": 226,
+    "units": "°C"
+  },
+  {
+    "charCode": "TFAHRENHEIT",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "c0971f38e406e0373232b466e4013342",
+    "label": "Temperature",
+    "rangeHint": {
+      "max": 140,
+      "midPoint": 86,
+      "min": 32,
+      "step": 1
+    },
+    "rank": 100,
+    "sensorColor": "0x66b0ff",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 59,
+          "min": -4,
+          "recommendation": "",
+          "strokeStyle": "red"
+        },
+        {
+          "max": 64.4,
+          "min": 59,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 71.6,
+          "min": 64.4,
+          "recommendation": "",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 77,
+          "min": 71.6,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 113,
+          "min": 77,
+          "recommendation": "",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://www.ccohs.ca/oshanswers/phys_agents/thermal_comfort.html",
+        "https://greendeal.ca/powersmart-tips"
+      ]
+    },
+    "type": 242,
+    "units": "°F"
+  },
+  {
+    "charCode": "TEMP4",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "65435f5ce6a47bab962f6625b6003ff1",
+    "label": "Temperature #4",
+    "rank": 0,
+    "sensorColor": "0xCCCCCC",
+    "sensorGasFormula": "",
+    "type": 243,
+    "units": "°C"
+  },
+  {
+    "charCode": "TEMP3",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "65435f5ce6a47bab962f6625b6001e5b",
+    "label": "Temperature #3",
+    "rank": 0,
+    "sensorColor": "0xCCCCCC",
+    "sensorGasFormula": "",
+    "type": 244,
+    "units": "°C"
+  },
+  {
+    "charCode": "TEMP2",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "65435f5ce6a47bab962f6625b6000559",
+    "label": "Temperature #2",
+    "rank": 0,
+    "sensorColor": "0xCCCCCC",
+    "sensorGasFormula": "",
+    "type": 245,
+    "units": "°C"
+  },
+  {
+    "charCode": "TEMP",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c004574",
+    "label": "Temperature",
+    "rangeHint": {
+      "max": 60,
+      "midPoint": 10,
+      "min": -40,
+      "step": 1
+    },
+    "rank": 99,
+    "sensorColor": "0x007bFF",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 15,
+          "min": -20,
+          "recommendation": "",
+          "strokeStyle": "red"
+        },
+        {
+          "max": 18,
+          "min": 15,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 22,
+          "min": 18,
+          "recommendation": "",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 26,
+          "min": 22,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 45,
+          "min": 26,
+          "recommendation": "",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://www.ccohs.ca/oshanswers/phys_agents/thermal_comfort.html",
+        "https://greendeal.ca/powersmart-tips"
+      ]
+    },
+    "type": 246,
+    "units": "°C"
+  },
+  {
+    "charCode": "EXT_TEMP",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "1df3f7bacb38c69502fa1eda5b0005eb",
+    "label": "Ext Temp",
+    "rank": 0,
+    "sensorColor": "0x03436A",
+    "sensorGasFormula": "",
+    "type": 247,
+    "units": "°C"
+  },
+  {
+    "charCode": "RH",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c005070",
+    "label": "Relative Humidity",
+    "rangeHint": {
+      "max": 100,
+      "midPoint": 50,
+      "min": 0,
+      "step": 1
+    },
+    "rank": 90,
+    "sensorColor": "0x3DA028",
+    "sensorGasFormula": "",
+    "sensorTypeIntelligence": {
+      "binsInfo": [
+        {
+          "max": 25,
+          "min": 0,
+          "recommendation": "",
+          "strokeStyle": "red"
+        },
+        {
+          "max": 30,
+          "min": 25,
+          "recommendation": "",
+          "strokeStyle": "yellow"
+        },
+        {
+          "max": 55,
+          "min": 30,
+          "recommendation": "",
+          "strokeStyle": "green"
+        },
+        {
+          "max": 65,
+          "min": 55,
+          "recommendation": "",
+          "strokeStyle": "red"
+        },
+        {
+          "max": 100,
+          "min": 65,
+          "recommendation": "",
+          "strokeStyle": "red"
+        }
+      ],
+      "citationUrls": [
+        "https://www.canada.ca/en/health-canada/services/air-quality/indoor-air-contaminants/reduce-humidity-moisture-mould.html",
+        "https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home"
+      ]
+    },
+    "type": 248,
+    "units": "%"
+  },
+  {
+    "charCode": "DPA",
+    "charting": true,
+    "display": true,
+    "enabled": true,
+    "gasStatsSupported": false,
+    "id": "7b58acdb2cf98a4ad9747fb47c011874",
+    "label": "Differential Pressure (deprecated)",
+    "rank": 0,
+    "sensorColor": "0x207F60",
+    "sensorGasFormula": "",
+    "type": 254,
+    "units": "Pa"
+  }
+]

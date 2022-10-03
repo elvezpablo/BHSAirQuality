@@ -1,14 +1,10 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Title,
-  Button,
-  Text,
   Group,
   SimpleGrid,
   Container,
   NativeSelect,
-  Grid,
-  Stack,
 } from '@mantine/core';
 import { SensorLocation, SensorData, SensorType, Sensors } from './types';
 

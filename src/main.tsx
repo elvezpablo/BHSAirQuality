@@ -7,7 +7,7 @@ import { ColorScheme, MantineProvider } from '@mantine/core';
 import App from './App';
 
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const root = rootElement && createRoot(rootElement);
 
 const Main = () => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -24,7 +24,6 @@ const Main = () => {
     <StrictMode>
       <MantineProvider
         withGlobalStyles
-        colorScheme={colorScheme}
         theme={{
           colorScheme,
           fontFamily: 'Bitter',
@@ -55,4 +54,6 @@ const Main = () => {
   );
 };
 
-root.render(<Main />);
+if (root) {
+  root.render(<Main />);
+}

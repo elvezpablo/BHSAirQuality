@@ -1,3 +1,5 @@
-# BHSAirQuality
+# BHS Air Quality
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/vitejs-vite-dhzvan)
+Data output from
+
+https://berkeleyusdpublic.iaqdashboard.ca/public-portal.html

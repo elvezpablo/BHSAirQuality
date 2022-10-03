@@ -90,7 +90,7 @@ export default function App() {
       await loadStatus();
       setBuilding('C');
     })();
-  });
+  }, []);
 
   useEffect(() => {
     (async () => {

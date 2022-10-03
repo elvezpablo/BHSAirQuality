@@ -47,7 +47,7 @@ const getCO2Color = (value: number) => {
   if (value >= 390) {
     return 'green';
   }
-  return 'black';
+  return 'red';
 };
 
 export { getCO2Color, getTempColor, getVOCColor, getHumidityColor };

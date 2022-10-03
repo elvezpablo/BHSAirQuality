@@ -27,7 +27,11 @@ const SubLabel = styled.div`
 
 export default function Sensor({ data, label, getColor, units }: Props) {
   if (typeof data === 'undefined') {
-    return <div>No {label} data.</div>;
+    return (
+      <div style={{ textAlign: 'center', lineHeight: '2rem' }}>
+        No {label} data.
+      </div>
+    );
   }
   const value = Math.round(data.data);
   return (

@@ -16,6 +16,7 @@ const Value = styled.span<{ color: string }>`
   border-radius: 2px;
   padding: 0 3px;
   font-side: .8rem;
+  text-shadow: 1px 1px rgb(0,0,0,.4);
 `;
 
 const SubLabel = styled.div`
@@ -31,7 +32,11 @@ export default function Sensor({ data, label, getColor, units }: Props) {
   const value = Math.round(data.data);
   return (
     <Group
-      style={{ borderTop: '1px solid rgb(33,33,33, .5)', padding: '.25rem' }}
+      style={{
+        borderBottom: '1px solid rgb(100,100,100, .3)',
+        padding: '.25rem',
+        backgroundColor: 'white',
+      }}
       position="apart"
     >
       <div>
@@ -39,7 +44,7 @@ export default function Sensor({ data, label, getColor, units }: Props) {
       </div>
       <Value color={getColor(value)}>
         {value}
-        {units}
+        <span style={{ fontSize: '.7rem' }}> {units}</span>
       </Value>
     </Group>
   );

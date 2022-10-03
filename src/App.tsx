@@ -87,6 +87,13 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
+      await loadStatus();
+      setBuilding('C');
+    })();
+  });
+
+  useEffect(() => {
+    (async () => {
       const chosenBuilding = sensors.filter((s) => s.building === building);
       const ids = chosenBuilding.map((c) => c.id);
       // load all sensors for building
@@ -107,7 +114,6 @@ export default function App() {
 
     setBuildings(buildings);
     setSensors(s);
-    setBuilding('C');
   };
 
   return (
@@ -115,19 +121,12 @@ export default function App() {
       <Group position="apart" py={'sm'}>
         <Title order={2}>Berkeley High Building {building}</Title>
         <Group>
+          Select Building
           <NativeSelect
             data={buildings}
             placeholder={building}
             onChange={(e) => setBuilding(e.target.value)}
           />
-          <Button
-            radius="xs"
-            onClick={() => {
-              loadStatus();
-            }}
-          >
-            Load
-          </Button>
         </Group>
       </Group>
       <SimpleGrid cols={4}>
@@ -138,8 +137,25 @@ export default function App() {
             const data = sensorDataMap ? sensorDataMap.get(s.mac) : undefined;
 
             return (
-              <div style={{ border: '1px solid #333' }} key={s.id}>
-                <Title order={4}>{s.description}</Title>
+              <div
+                style={{
+                  border: '1px solid #333',
+                  backgroundColor: 'rgb(180,180,180, .3)',
+                  borderRadius: '3px',
+                }}
+                key={s.id}
+              >
+                <Title
+                  style={{
+                    textAlign: 'center',
+                    padding: '4px',
+                    backgroundColor: 'rgb(200,200,200, 1)',
+                    borderBottom: '1px solid rgb(100,100,100,.4)',
+                  }}
+                  order={4}
+                >
+                  {s.description.replace('BHS # ', '')}
+                </Title>
 
                 {data && (
                   <div>
@@ -153,7 +169,7 @@ export default function App() {
                       label={<span>VOC</span>}
                       data={data.get('VOC')}
                       getColor={getVOCColor}
-                      units={'%'}
+                      units={'ppm/ppb'}
                     />
 
                     <Sensor

@@ -35,7 +35,7 @@ jobs:
           cmd: build # will run `yarn build` command
       - uses: actions/upload-artifact@v3
         with:
-          name: gh-pages
+          name: github-pages
           path: dist/
   deploy:
       runs-on: ubuntu-latest

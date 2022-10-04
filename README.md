@@ -65,8 +65,10 @@ Example response snippet. The array of sensor data is used to construct the seco
         "notifyIfDown": false,
         "owner": "c62e0d42341740bfbd3bb321154219df",
         "ownerClientId": "c0971f38e406e0373232b466e401d2a2"
-      },
-      ...
+      }
+    ]
+  }
+] 
 ```
 
 
@@ -79,13 +81,16 @@ The sensor `description` is parsed to separate the sensors by building and floor
 The array of sensor ids is used to request information on the 4 sensors. The request below queries for a single sensor.
 
 ```bash
+
  curl -v -X POST -d '["06d5b139864c474e88434ec20e8f4132"]' -H "Content-Type: application/json" "https://iot.aretas.ca/rest/publicaccess/latestdata?publicAccessToken=2dda18d0-f7e8-486e-903d-eebf831a9bf0"
+ 
 ````
 
 ### Sensor Response
 
-```json
+For BHS ~160 sensor ids are sent but not all return data. 
 
+```json
 [
   {
     "data": 72.76058,
@@ -116,9 +121,9 @@ The array of sensor ids is used to request information on the 4 sensors. The req
 
 The sensor data is parsed into a map with the `mac` (assuming mac address of the device) as the lookup key.
 
-242 = TFAHRENHEIT
-96 = VOC
-181 = CO2
-248 = RH
+- 242 = TFAHRENHEIT
+- 96 = VOC
+- 181 = CO2
+- 248 = RH
 
 The bin thresholds for the each sensor type are located in the `/data/sensorType.json` file and are used to color the value pills.

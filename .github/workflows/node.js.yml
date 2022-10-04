@@ -34,8 +34,7 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
       - uses: actions/upload-pages-artifact@v1
-        with:
-          name: github-pages
+        with:          
           path: dist/
   deploy:
       needs: build

@@ -26,7 +26,7 @@ curl https://iot.aretas.ca/rest/publicaccess/getdevices?publicAccessToken=2dda18
 
 Example response snippet. The array of sensor data is used to construct the second request for all the sensor information. This can be sent as one request with multiple ids.
 
-````json
+```json
 [
   {
     "city": "Berkeley",
@@ -66,8 +66,8 @@ Example response snippet. The array of sensor data is used to construct the seco
         "owner": "c62e0d42341740bfbd3bb321154219df",
         "ownerClientId": "c0971f38e406e0373232b466e401d2a2"
       },
-      
-      ```
+      ...
+```
 
 
 ### Parsing Data

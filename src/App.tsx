@@ -31,25 +31,30 @@ const SensorTypeMap: { [key: number]: SensorType } = {
 
 const firstLetter = (description: string) => {
   const room = description.match(/[A-Z][0-9]{1,3}/);
-  if (room) {
-    return room.pop()[0];
+
+  if (room && room.length > 0) {    
+    return room[0][0];
   }
 
-  return description.match(/^BHS # ([A-Z])/)[1];
+  const match = description.match(/^BHS # ([A-Z])/);
+  return match ? match[1] : "X";
+  
 };
 
 const parseSensorLocation = (data: SensorLocation[]): SensorLocation[] => {
   return data
-    .map(({ id, description, mac, lastReportTime }) => ({
+    .map(({ id, description, mac, lastReportTime }) => {
+      const room = description.match(/[0-9]{2,3}/);
+      return {
       id,
       description,
       mac,
-      room: description.match(/[0-9]{2,3}/)
-        ? parseInt(description.match(/[0-9]{2,3}/)[0])
-        : 100,
+      room: room ? parseInt(room[0]) : 100,
       lastReportTime: new Date(lastReportTime),
       building: firstLetter(description),
-    }))
+    }
+    
+  })
     .sort((a, b) => (a.building > b.building ? 1 : -1));
 };
 
@@ -68,8 +73,10 @@ const loadSensorData = async (ids: string[]) => {
       ? macMap.get(d.mac)
       : new Map<SensorType, SensorData>();
 
-    data.set(SensorTypeMap[d.type], d);
-    macMap.set(d.mac, data);
+      if(data) {
+        data.set(SensorTypeMap[d.type], d);
+        macMap.set(d.mac, data);
+      }
   });
 
   return macMap;

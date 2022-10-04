@@ -33,16 +33,16 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: build # will run `yarn build` command
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-pages-artifact@v1
         with:
           name: github-pages
           path: dist/
   deploy:
+      needs: build
       runs-on: ubuntu-latest
       environment:
         name: github-pages
         url: ${{ steps.deployment.outputs.page_url }}
-      needs: build
       steps:
         - name: Deploy to GitHub Pages
           id: deployment

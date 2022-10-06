@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Title,
   Group,
@@ -7,15 +7,16 @@ import {
   NativeSelect,
 } from '@mantine/core';
 import { SensorLocation, SensorData, SensorType, Sensors } from './types';
-
 import Sensor from './components/Sensor';
 import {
   getCO2Color,
   getHumidityColor,
   getTempColor,
   getVOCColor,
+  colors,
 } from './colors';
 import CO2Graph from './components/CO2Graph';
+import { scaleLinear } from '@visx/scale';
 
 const SCHOOL = 'c62e0d42341740bfbd3bb321154219df';
 const API_KEY = '2dda18d0-f7e8-486e-903d-eebf831a9bf0';
@@ -120,6 +121,13 @@ export default function App() {
     setSensors(s);
   };
 
+  const colorScale = useMemo(() => {
+    return scaleLinear({
+      domain: colors.map(x => x.ppm),
+      range: colors.map(x => x.color)
+    })
+  }, [])
+
   return (
     <Container>
       <Group position="apart" py={'sm'}>
@@ -135,7 +143,6 @@ export default function App() {
       </Group>
       <SimpleGrid cols={4}>
         {sensors
-          
           .filter((s) => s.building === building)
           .sort((a, b) => (a.room > b.room ? 1 : -1))
           .map((s) => {
@@ -164,7 +171,7 @@ export default function App() {
 
                 {data && (
                   <div>
-                    <Sensor
+                    {/* <Sensor
                       label={<span>Temp</span>}
                       data={data.get('TFAHRENHEIT')}
                       getColor={getTempColor}
@@ -182,15 +189,15 @@ export default function App() {
                       data={data.get('RH')}
                       getColor={getHumidityColor}
                       units={'%'}
-                    />
+                    /> */}
                     <Sensor
                       label={
                         <span>
-                          CO<sub>2</sub>
+                          Current CO<sub>2</sub>
                         </span>
                       }
                       data={data.get('CO2')}
-                      getColor={getCO2Color}
+                      getColor={colorScale}
                       units={'ppm'}
                     />
                   </div>

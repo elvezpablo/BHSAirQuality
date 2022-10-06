@@ -1,11 +1,11 @@
 
-import { scaleBand, scaleLinear, scaleUtc } from "@visx/scale";
+import { scaleBand, scaleLinear, scaleOrdinal, scaleUtc } from "@visx/scale";
 import { Group as SVGGroup } from "@visx/group";
 import { Bar } from "@visx/shape";
 import React, { useMemo, useState } from "react";
 import { Text } from '@visx/text';
 import sensorData from "../data/051022_CO2.json";
-import { getCO2Color } from '../colors';
+import { getCO2Color, colors } from '../colors';
 
 type Data = {
   name: string;
@@ -19,7 +19,14 @@ const getTime = (d: Data) =>
   `${new Date(d.timestamp).getHours()}:${new Date(d.timestamp).getMinutes()}`;
 
 export default function CO2Graph({ mac }: { mac: number | undefined }) {
-  const data = sensorData.filter((d) => d.mac === mac);
+  const timestamps = sensorData.map(d => d.timestamp);
+  
+  const data = sensorData.filter((d) => d.mac === mac).filter(d => timestamps.includes(d.timestamp));
+  
+  if(typeof data === "undefined" || data.length === 0) {
+    return <div>No data</div>
+  }
+
   const [hoverdTime, setHoveredTime] = useState("");
   const width = 218;
   const height = 160;
@@ -53,6 +60,13 @@ export default function CO2Graph({ mac }: { mac: number | undefined }) {
     [height]
   );
 
+  const colorScale = useMemo(() => {
+    return scaleLinear({
+      domain: colors.map(x => x.ppm),
+      range: colors.map(x => x.color)
+    })
+  }, [])
+
   const maxCO2 = Math.max(...data.map(getPPM));
 
   const lunchStart = new Date('Wed Oct 05 2022 11:42:00 GMT-0700 (Pacific Daylight Time)').getTime();
@@ -81,7 +95,7 @@ export default function CO2Graph({ mac }: { mac: number | undefined }) {
                 y={barY}
                 width={barWidth}
                 height={barHeight}
-                fill={getCO2Color(d.value)}
+                fill={colorScale(d.value)}
                 onMouseEnter={() => {
                    const t = new Date(d.timestamp);
                   setHoveredTime(`${t.getHours()}:${t.getMinutes()}`)

@@ -19,7 +19,7 @@ const getPPM = (d: Data) => Math.round(d.value);
 const getTime = (d: Data) =>
   `${new Date(d.timestamp).getHours()}:${new Date(d.timestamp).getMinutes()}`;
 
-export default function CO2Graph({ mac }: { mac: number }) {
+export default function CO2Graph({ mac }: { mac: number | undefined }) {
   const data = sensorData.filter((d) => d.mac === mac);
   const width = 218;
   const height = 180;

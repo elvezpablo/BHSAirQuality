@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { SensorData } from '../types';
 import styled from '@emotion/styled';
 
+
 type Props = {
   label: ReactNode;
   data: SensorData | undefined;
@@ -50,6 +51,7 @@ export default function Sensor({ data, label, getColor, units }: Props) {
         {value}
         <span style={{ fontSize: '.7rem' }}> {units}</span>
       </Value>
+      
     </Group>
   );
 }

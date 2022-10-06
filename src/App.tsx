@@ -15,6 +15,7 @@ import {
   getTempColor,
   getVOCColor,
 } from './colors';
+import CO2Graph from './components/CO2Graph';
 
 const SCHOOL = 'c62e0d42341740bfbd3bb321154219df';
 const API_KEY = '2dda18d0-f7e8-486e-903d-eebf831a9bf0';
@@ -193,6 +194,7 @@ export default function App() {
                     />
                   </div>
                 )}
+                {data && data.get('CO2') && <CO2Graph mac={data.get('CO2')?.mac} />}
               </div>
             );
           })}

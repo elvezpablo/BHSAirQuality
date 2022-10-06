@@ -135,6 +135,7 @@ export default function App() {
       </Group>
       <SimpleGrid cols={4}>
         {sensors
+          
           .filter((s) => s.building === building)
           .sort((a, b) => (a.room > b.room ? 1 : -1))
           .map((s) => {

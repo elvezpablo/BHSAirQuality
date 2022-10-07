@@ -6,17 +6,25 @@ import {
   Container,
   NativeSelect,
 } from '@mantine/core';
-import { SensorLocation, SensorData, SensorType, Sensors } from './types';
+import { SensorLocation, SensorData, SensorType, Sensors, Data, DayData } from './types';
 import Sensor from './components/Sensor';
 import {
-  getCO2Color,
-  getHumidityColor,
-  getTempColor,
-  getVOCColor,
   colors,
 } from './colors';
 import CO2Graph from './components/CO2Graph';
 import { scaleLinear } from '@visx/scale';
+import Legend from './components/Legend';
+import d0510 from "./data/051022_CO2.json";
+import d0610 from "./data/061022_CO2.json";
+
+
+
+const days:DayData ={
+    "06/10": d0610,
+    "05/10": d0510
+  }
+  
+
 
 const SCHOOL = 'c62e0d42341740bfbd3bb321154219df';
 const API_KEY = '2dda18d0-f7e8-486e-903d-eebf831a9bf0';
@@ -89,6 +97,7 @@ export default function App() {
   const [sensorDataMap, setSensorDataMap] = useState<Map<number, Sensors>>();
   const [buildings, setBuildings] = useState<string[]>([]);
   const [building, setBuilding] = useState('');
+  const [dayData, setDayData] = useState<Data[]>(d0610);
 
   useEffect(() => {
     (async () => {
@@ -106,7 +115,7 @@ export default function App() {
 
       setSensorDataMap(macMap);
     })();
-  }, [building]);
+  }, [building, dayData]);
 
   const loadStatus = async () => {
     const response = await fetch(GET_DEVICES_URL);
@@ -126,18 +135,28 @@ export default function App() {
       domain: colors.map(x => x.ppm),
       range: colors.map(x => x.color)
     })
-  }, [])
+  }, []);
 
   return (
-    <Container>
+    <Container style={{position: "relative"}}>
       <Group position="apart" py={'sm'}>
         <Title order={2}>Berkeley High Building {building}</Title>
+        <Legend />
         <Group>
           Select Building
           <NativeSelect
             data={buildings}
             placeholder={building}
             onChange={(e) => setBuilding(e.target.value)}
+          />
+          Day
+          <NativeSelect
+            data={Object.keys(days)}
+
+            onChange={(e) => {
+              const day = e.target.value;
+              setDayData(days[day as keyof Data])
+            }}
           />
         </Group>
       </Group>
@@ -147,6 +166,10 @@ export default function App() {
           .sort((a, b) => (a.room > b.room ? 1 : -1))
           .map((s) => {
             const data = sensorDataMap ? sensorDataMap.get(s.mac) : undefined;
+
+            if(typeof data === "undefined") {
+              return "";
+            }
 
             return (
               <div
@@ -171,25 +194,6 @@ export default function App() {
 
                 {data && (
                   <div>
-                    {/* <Sensor
-                      label={<span>Temp</span>}
-                      data={data.get('TFAHRENHEIT')}
-                      getColor={getTempColor}
-                      units={'˚F'}
-                    />
-                    <Sensor
-                      label={<span>VOC</span>}
-                      data={data.get('VOC')}
-                      getColor={getVOCColor}
-                      units={'ppm/ppb'}
-                    />
-
-                    <Sensor
-                      label={<span>Humidity</span>}
-                      data={data.get('RH')}
-                      getColor={getHumidityColor}
-                      units={'%'}
-                    /> */}
                     <Sensor
                       label={
                         <span>
@@ -202,7 +206,7 @@ export default function App() {
                     />
                   </div>
                 )}
-                {data && data.get('CO2') && <CO2Graph mac={data.get('CO2')?.mac} />}
+                {data && data.get('CO2') && <CO2Graph sensorData={dayData} mac={data.get('CO2')?.mac} />}
               </div>
             );
           })}

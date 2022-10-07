@@ -14,6 +14,18 @@ export type SensorData = {
   type: number;
 };
 
+export type Data = {
+  name: string;
+  mac: number;
+  timestamp: number;
+  value: number;
+  id: number;
+};
+
+export type DayData = {
+  [s:string]: Data[]
+}
+
 export type SensorType = 'TFAHRENHEIT' | 'VOC' | 'CO2' | 'RH';
 
 export type Sensors = Map<SensorType, SensorData>;

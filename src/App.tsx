@@ -16,13 +16,24 @@ import { scaleLinear } from '@visx/scale';
 import Legend from './components/Legend';
 import d0510 from "./data/051022_CO2.json";
 import d0610 from "./data/061022_CO2.json";
+import d0710 from "./data/071022_CO2.json";
 
 
 
-const days:DayData ={
-    "06/10": d0610,
-    "05/10": d0510
-  }
+const days:DayData = {
+    "07/10": {
+      date: new Date("Fri Oct 07 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
+      data: d0710
+    },
+    "06/10": {
+      date: new Date("Thu Oct 06 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
+      data: d0610,
+    },
+    "05/10": {
+      date: new Date("Wed Oct 05 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
+      data: d0510
+    }
+}
   
 
 
@@ -97,7 +108,8 @@ export default function App() {
   const [sensorDataMap, setSensorDataMap] = useState<Map<number, Sensors>>();
   const [buildings, setBuildings] = useState<string[]>([]);
   const [building, setBuilding] = useState('');
-  const [dayData, setDayData] = useState<Data[]>(d0610);
+  const [dayData, setDayData] = useState<Data[]>(d0710);
+  const [day, setDay] = useState<string>('07/10');
 
   useEffect(() => {
     (async () => {
@@ -152,10 +164,9 @@ export default function App() {
           Day
           <NativeSelect
             data={Object.keys(days)}
-
+            value={day}
             onChange={(e) => {
-              const day = e.target.value;
-              setDayData(days[day as keyof Data])
+              setDay(e.target.value);              
             }}
           />
         </Group>
@@ -206,7 +217,7 @@ export default function App() {
                     />
                   </div>
                 )}
-                {data && data.get('CO2') && <CO2Graph sensorData={dayData} mac={data.get('CO2')?.mac} />}
+                {data && data.get('CO2') && <CO2Graph day={days[day].date} sensorData={days[day].data} mac={data.get('CO2')?.mac} />}
               </div>
             );
           })}

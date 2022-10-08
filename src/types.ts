@@ -23,7 +23,10 @@ export type Data = {
 };
 
 export type DayData = {
-  [s:string]: Data[]
+  [s:string]: {
+    date: Date,
+    data: Data[]
+  }
 }
 
 export type SensorType = 'TFAHRENHEIT' | 'VOC' | 'CO2' | 'RH';

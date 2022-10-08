@@ -1,5 +1,5 @@
 
-import { scaleBand, scaleLinear, scaleOrdinal, scaleUtc } from "@visx/scale";
+import { scaleBand, scaleLinear, scaleOrdinal, scaleTime, scaleUtc } from "@visx/scale";
 import { Group as SVGGroup } from "@visx/group";
 import { Bar } from "@visx/shape";
 import React, { Fragment, useMemo, useState } from "react";
@@ -8,16 +8,26 @@ import { Text } from '@visx/text';
 import { colors } from '../colors';
 import { Data } from '../types';
 
-
+type Props = { 
+  mac: number | undefined, 
+  sensorData: Data[] 
+  day: Date
+}
 
 const getPPM = (d: Data) => Math.round(d.value);
 const getTime = (d: Data) =>
   `${new Date(d.timestamp).getHours()}:${new Date(d.timestamp).getMinutes()}`;
+const getTimestamp = (d:Data) => d.timestamp;
 
-export default function CO2Graph({ mac, sensorData }: { mac: number | undefined, sensorData: Data[] }) {
+
+export default function CO2Graph({ mac, sensorData, day }: Props) {
 
   const data = sensorData.filter((d) => d.mac === mac);
-  
+  day.setHours(6);
+  const startTime = day.getTime();
+  day.setHours(18);
+  const endTime = day.getTime();
+
   if(typeof data === "undefined" || data.length === 0) {
     return <div>No data</div>
   }
@@ -38,10 +48,11 @@ export default function CO2Graph({ mac, sensorData }: { mac: number | undefined,
   );
   const timeScale = useMemo(
     () =>
-    scaleLinear<number>({
+    scaleTime<number>({
         range: [0, width],
         round: true,
-        domain: [data[0].timestamp, data[data.length-1].timestamp]       
+        domain: [startTime, endTime],
+           
       }),
     [width, sensorData]
   );
@@ -65,31 +76,43 @@ export default function CO2Graph({ mac, sensorData }: { mac: number | undefined,
   const maxCO2 = Math.max(...data.map(getPPM));
   const timestamps = data.map(t => t.timestamp).filter(t => typeof t !== "undefined");
   // console.log(timestamps)
-  const today = new Date(timestamps.length ? timestamps[5] : "January");
-  today.setHours(11)
-  today.setMinutes(41);
-  const lunchStart = today.getTime();
-  today.setHours(12)
-  today.setMinutes(21);
-  const lunchEnd = today.getTime()
+  
+  day.setHours(11)
+  day.setMinutes(41);
+  const lunchStart = day.getTime();
+
+  day.setHours(12)
+  day.setMinutes(21);
+  const lunchEnd = day.getTime();
+
+  const lunchStartX = timeScale(lunchStart);
+  const lunchEndX = timeScale(lunchEnd);
+
+  
+  day.setHours(8);
+  day.setMinutes(30);
+  const firstPeriodStart = day.getTime();
+
+  day.setMinutes(33);
+  day.setHours(15);
+  const sixthPeriodEnd = day.getTime();
   return (
     <div>
       <svg width={width} height={height}>
         <Text y={15} x={5} fontSize={".8rem"}>{`Max: ${maxCO2} ppm`}</Text>
         <Text y={30} x={5} fontSize={".8rem"}>{hoverdTime}</Text>
-        
+        <rect  height={height} width={1} x={timeScale(firstPeriodStart)} y={0} fill={'rgb(200, 200, 200, .8)'} />
+        <rect  height={height} width={lunchEndX - lunchStartX} x={lunchStartX} y={0} fill={'rgb(200, 200, 200, .4)'} />
+        <rect  height={height} width={1} x={timeScale(sixthPeriodEnd)} y={0} fill={'rgb(200, 200, 200, .8)'} />
         <SVGGroup>
           {data.map((d) => {
-            const barWidth = xScale.bandwidth();
+            const barWidth = 3;
             const barHeight = height - (yScale(getPPM(d)) ?? 0);
-            const barX = xScale(getTime(d));
+            const barX = timeScale(getTimestamp(d));
             const barY = height - barHeight;
             
             return (
               <Fragment key={`bar-${d.id}`}>
-              {d.timestamp > lunchStart && d.timestamp < lunchEnd && (
-                <rect  height={height} width={barWidth+2} x={barX} y={0} fill={'rgb(200, 200, 200, .4)'} />
-              )}
               <Bar
                 
                 x={barX}

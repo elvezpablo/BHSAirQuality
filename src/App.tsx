@@ -17,10 +17,20 @@ import Legend from './components/Legend';
 import d0510 from "./data/051022_CO2.json";
 import d0610 from "./data/061022_CO2.json";
 import d0710 from "./data/071022_CO2.json";
+import d1010 from "./data/101022_CO2.json";
+import d1110 from "./data/111022_CO2.json";
 
 
 
 const days:DayData = {
+    "11/10": {
+      date: new Date("Tue Oct 11 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
+      data: d1110
+    },
+    "10/10": {
+      date: new Date("Mon Oct 10 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
+      data: d1010
+    },
     "07/10": {
       date: new Date("Fri Oct 07 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
       data: d0710
@@ -109,7 +119,7 @@ export default function App() {
   const [buildings, setBuildings] = useState<string[]>([]);
   const [building, setBuilding] = useState('');
   const [dayData, setDayData] = useState<Data[]>(d0710);
-  const [day, setDay] = useState<string>('07/10');
+  const [day, setDay] = useState<string>('11/10');
 
   useEffect(() => {
     (async () => {

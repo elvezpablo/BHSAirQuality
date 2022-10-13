@@ -19,10 +19,15 @@ import d0610 from "./data/061022_CO2.json";
 import d0710 from "./data/071022_CO2.json";
 import d1010 from "./data/101022_CO2.json";
 import d1110 from "./data/111022_CO2.json";
+import d1210 from "./data/121022_CO2.json";
 
 
 
 const days:DayData = {
+  "12/10": {
+    date: new Date("Wed Oct 12 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
+    data: d1210
+  },
     "11/10": {
       date: new Date("Tue Oct 11 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
       data: d1110
@@ -119,7 +124,7 @@ export default function App() {
   const [buildings, setBuildings] = useState<string[]>([]);
   const [building, setBuilding] = useState('');
   const [dayData, setDayData] = useState<Data[]>(d0710);
-  const [day, setDay] = useState<string>('11/10');
+  const [day, setDay] = useState<string>('12/10');
 
   useEffect(() => {
     (async () => {

@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <title>myCO2 Sensor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,300;0,600;1,100&family=Poppins:wght@100&family=Work+Sans:wght@100;300;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ["Bitter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #333;
+        color: #e9e9e9;
+      }
+      #data {
+        height: 600px;
+        border: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <h1 class="text-3xl font-serif py-2">MyCO<sub>2</sub> - BLE</h1>
+      <div class="flex">
+        <div class="flex-none text-gray-300 my-4">
+          <select
+            onchange="handleChange(e)"
+            class="block w-full bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500 p-2 pr-8 rounded-sm shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option>CO2ppm</option>
+            <option>RH%</option>
+            <option>Temp</option>
+          </select>
+		  <div class="py-2">
+			LED COLOR: <div id="led" class="round bg-gray-400 rounded-full ml-2 h-3 w-3 inline-block"></div>
+		  </div>
+        </div>		
+        <div class="flex-grow text-gray-300 px-4 py-2 m-2">
+          <div id="data" class="overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <button
+        class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-sm"
+        onClick="connect()"
+      >
+        Connect
+      </button>
+    </div>
+
+    <script>
+      const dataDiv = document.getElementById("data");
+
+	  let line = 1;
+	  function printLog(str) {
+		const log = document.createElement("div");
+		log.classList = "text-blue-400 border-b font-mono p-2 border-gray-600";
+		log.innerText = `${line}. ${str}`;
+		line++;
+		dataDiv.appendChild(log);
+		dataDiv.scrollTop = dataDiv.scrollHeight;
+	  }
+
+      const CO2 = {
+        service: "00007000-b38d-4985-720e-0f993a68ee41",
+        characteristic: "00007001-b38d-4985-720e-0f993a68ee41",
+        desc2: "00002902-0000-1000-8000-00805f9b34fb", // data transfer
+      };
+      // ArrayBuffer(4)
+      const Temp = {
+        service: "00002234-b38d-4985-720e-0f993a68ee41",
+        characteristic: "00002235-b38d-4985-720e-0f993a68ee41",
+        desc2: "00002902-0000-1000-8000-00805f9b34fb", // data transfer
+      };
+
+      const Humidity = {
+        service: "00001234-b38d-4985-720e-0f993a68ee41",
+        characteristic: "00001235-b38d-4985-720e-0f993a68ee41",
+        desc2: "00002902-0000-1000-8000-00805f9b34fb", // data transfer
+      };
+
+      const theSensor = CO2;
+	  printLog("init");
+	  function setLEDColor(val) {
+		const ledElem = document.getElementById("led");
+		const color = val <= 3 ? 'bg-green-500' : val <= 5 ? 'bg-yellow-500' : 'bg-red-500'; 
+		ledElem.className = ledElem.className.replace(/bg-[\-a-z0-9]+/, color)
+		
+	  }
+	 
+      async function connect() {
+        printLog("request device");
+        const device = await navigator.bluetooth.requestDevice({
+          filters: [
+            {
+              name: "MyCO2",
+            },
+          ],
+          optionalServices: [theSensor.service],
+        });
+		printLog('get gatt server');
+        const server = await device.gatt.connect();
+		printLog(` device id ${server.device.id}`)
+		console.log(server);
+		printLog('get service');
+        const theService = await server.getPrimaryService(theSensor.service);
+		console.log(theService);
+		printLog('get characteristic');
+        const theCharacteristic = await theService.getCharacteristic(theSensor.characteristic);
+		console.log(theCharacteristic)
+		printLog('start notifications');
+        await theCharacteristic.startNotifications();
+		
+        await theCharacteristic.addEventListener(
+          "characteristicvaluechanged",
+          (evt) => {
+            const value = evt.target.value;
+            // console.log(value)
+            // console.log("temp: ", value.getUint32());
+            // assuming the array has at least four elements
+			const led = value.getUint8(1);
+			setLEDColor(led)
+            printLog(`VALUE: ${value.getUint8(0)} LED: ${led}`)
+			
+            console.log(
+              "VALUE: ",
+              value.getUint8(0),
+              "LED: ",
+              value.getUint8(1)
+            );
+          }
+        );        
+      }
+	  
+    </script>
+  </body>
+</html>

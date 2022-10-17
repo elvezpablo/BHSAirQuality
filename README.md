@@ -4,6 +4,8 @@ Data output from IAQ Dashboard API.
 
 https://berkeleyusdpublic.iaqdashboard.ca/public-portal.html
 
+Minor edit
+
 ## Research and CURL requests
 
 School IDS are embedded in the HTML page and have been imported in the `/data/schools.json` file.

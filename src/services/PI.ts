@@ -1,4 +1,4 @@
-import { DayData } from '../types';
+import { Data, DayData } from '../types';
 
 
 const toDate = (str:string):Date | undefined => {
@@ -17,7 +17,7 @@ const toDate = (str:string):Date | undefined => {
 }
 
 export const getDays = async ():Promise<DayData> => {
-	const response = await fetch("/data/files.json") 
+	const response = await fetch("./data/files.json") 
 	const data = await response.json();	
 	const dayData:DayData = {};
 	data.forEach((d:string) => {
@@ -25,7 +25,7 @@ export const getDays = async ():Promise<DayData> => {
 		if(date) {
 			dayData[date?.toDateString().substring(0, 11)] = {
 				date: date,
-				path: "/data/"+d
+				path: "./data/"+d
 			}
 		}
 		
@@ -37,5 +37,5 @@ export const getDayData = async (path:string) => {
 	const response = await fetch(path) 
 	const data = await response.json();	
 
-	return data;
+	return data as Data[];
 }

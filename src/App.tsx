@@ -6,129 +6,38 @@ import {
   Container,
   NativeSelect,
 } from '@mantine/core';
-import { SensorLocation, SensorData, SensorType, Sensors, Data, DayData } from './types';
-import Sensor from './components/Sensor';
-import {
-  colors,
-} from './colors';
-import CO2Graph from './components/CO2Graph';
 import { scaleLinear } from '@visx/scale';
+import { SensorLocation, Sensors, Data, DayData } from './types';
+import Sensor from './components/Sensor';
+import {colors} from './colors';
+import CO2Graph from './components/CO2Graph';
 import Legend from './components/Legend';
-import d0510 from "./data/051022_CO2.json";
-import d0610 from "./data/061022_CO2.json";
-import d0710 from "./data/071022_CO2.json";
-import d1010 from "./data/101022_CO2.json";
-import d1110 from "./data/111022_CO2.json";
-import d1210 from "./data/121022_CO2.json";
-
-
-
-const days:DayData = {
-  "12/10": {
-    date: new Date("Wed Oct 12 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
-    data: d1210
-  },
-    "11/10": {
-      date: new Date("Tue Oct 11 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
-      data: d1110
-    },
-    "10/10": {
-      date: new Date("Mon Oct 10 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
-      data: d1010
-    },
-    "07/10": {
-      date: new Date("Fri Oct 07 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
-      data: d0710
-    },
-    "06/10": {
-      date: new Date("Thu Oct 06 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
-      data: d0610,
-    },
-    "05/10": {
-      date: new Date("Wed Oct 05 2022 06:00:00 GMT-0700 (Pacific Daylight Time)"),
-      data: d0510
-    }
-}
-  
-
-
-const SCHOOL = 'c62e0d42341740bfbd3bb321154219df';
-const API_KEY = '2dda18d0-f7e8-486e-903d-eebf831a9bf0';
-const BASE_PATH = 'https://iot.aretas.ca/rest/publicaccess/';
-const GET_DEVICES_URL = `${BASE_PATH}getdevices?publicAccessToken=${API_KEY}&locationIds=${SCHOOL}`;
-const GET_LATEST_DATA = `${BASE_PATH}latestdata?publicAccessToken=${API_KEY}`;
-
-const SensorTypeMap: { [key: number]: SensorType } = {
-  242: 'TFAHRENHEIT',
-  96: 'VOC',
-  181: 'CO2',
-  248: 'RH',
-};
-
-const firstLetter = (description: string) => {
-  const room = description.match(/[A-Z][0-9]{1,3}/);
-
-  if (room && room.length > 0) {    
-    return room[0][0];
-  }
-
-  const match = description.match(/^BHS # ([A-Z])/);
-  return match ? match[1] : "X";
-  
-};
-
-const parseSensorLocation = (data: SensorLocation[]): SensorLocation[] => {
-  return data
-    .map(({ id, description, mac, lastReportTime }) => {
-      const room = description.match(/[0-9]{2,3}/);
-      return {
-      id,
-      description,
-      mac,
-      room: room ? parseInt(room[0]) : 100,
-      lastReportTime: new Date(lastReportTime),
-      building: firstLetter(description),
-    }
-    
-  })
-    .sort((a, b) => (a.building > b.building ? 1 : -1));
-};
-
-const loadSensorData = async (ids: string[]) => {
-  const response = await fetch(GET_LATEST_DATA, {
-    method: 'POST',
-    body: JSON.stringify(ids),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  const json: SensorData[] = await response.json();
-  const macMap = new Map<number, Sensors>();
-  json.forEach((d) => {
-    const data = macMap.has(d.mac)
-      ? macMap.get(d.mac)
-      : new Map<SensorType, SensorData>();
-
-      if(data) {
-        data.set(SensorTypeMap[d.type], d);
-        macMap.set(d.mac, data);
-      }
-  });
-
-  return macMap;
-};
+import { loadSensorData, loadStatus } from './services/Aretas';
+import {getDayData, getDays} from './services/PI';
 
 export default function App() {
   const [sensors, setSensors] = useState<SensorLocation[]>([]);
   const [sensorDataMap, setSensorDataMap] = useState<Map<number, Sensors>>();
   const [buildings, setBuildings] = useState<string[]>([]);
   const [building, setBuilding] = useState('');
-  const [dayData, setDayData] = useState<Data[]>(d0710);
-  const [day, setDay] = useState<string>('12/10');
+  const [dayData, setDayData] = useState<Data[]>([]);
+  const [days, setDays] = useState<DayData>({});
+  const [day, setDay] = useState<string>();
 
   useEffect(() => {
     (async () => {
-      await loadStatus();
+      const days = await getDays();
+      const latest = Object.keys(days).at(-1);
+      setDays(days);
+      if (latest){
+
+        const data = await getDayData(days[latest].path);
+        setDayData(data);
+        setDay(latest)
+      }
+      const [buildingsData, sensorsData] = await loadStatus();
+      setBuildings(buildingsData);
+      setSensors(sensorsData);
       setBuilding('C');
     })();
   }, []);
@@ -144,18 +53,6 @@ export default function App() {
     })();
   }, [building, dayData]);
 
-  const loadStatus = async () => {
-    const response = await fetch(GET_DEVICES_URL);
-    const json = await response.json();
-
-    const s = parseSensorLocation(json[0].sensorLocations);
-    const buildings = s
-      .map((c) => c.building)
-      .filter((val, idx, self) => self.indexOf(val) === idx);
-
-    setBuildings(buildings);
-    setSensors(s);
-  };
 
   const colorScale = useMemo(() => {
     return scaleLinear({
@@ -180,8 +77,10 @@ export default function App() {
           <NativeSelect
             data={Object.keys(days)}
             value={day}
-            onChange={(e) => {
-              setDay(e.target.value);              
+            onChange={async (e) => {
+              setDay(e.target.value);
+              const data = await getDayData(days[e.target.value].path);              
+              setDayData(data)
             }}
           />
         </Group>
@@ -232,7 +131,7 @@ export default function App() {
                     />
                   </div>
                 )}
-                {data && data.get('CO2') && <CO2Graph day={days[day].date} sensorData={days[day].data} mac={data.get('CO2')?.mac} />}
+                {data && data.get('CO2') && day && <CO2Graph day={days[day].date} sensorData={dayData} mac={data.get('CO2')?.mac} />}
               </div>
             );
           })}

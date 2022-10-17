@@ -24,8 +24,8 @@ export type Data = {
 
 export type DayData = {
   [s:string]: {
-    date: Date,
-    data: Data[]
+    date: Date
+    path: string
   }
 }
 

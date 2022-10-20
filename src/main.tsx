@@ -12,7 +12,7 @@ const root = rootElement && createRoot(rootElement);
 const Main = () => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
-    defaultValue: 'light',
+    defaultValue: 'dark',
   });
 
   const toggleColorScheme = (value?: ColorScheme) =>

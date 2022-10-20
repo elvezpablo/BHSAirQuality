@@ -32,7 +32,7 @@ export default function BuildingGraphs({
   }, []);
 
   return (
-    <SimpleGrid cols={4}>
+    <SimpleGrid cols={2}>
       {sensors
         .filter((s) => s.building === building)
         .sort((a, b) => (a.room > b.room ? 1 : -1))

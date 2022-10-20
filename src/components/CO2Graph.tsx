@@ -1,6 +1,6 @@
 import { Group as SVGGroup } from "@visx/group";
 import { scaleBand, scaleLinear, scaleTime } from "@visx/scale";
-import { Bar } from "@visx/shape";
+import { Bar, BarRounded } from "@visx/shape";
 import { Text } from "@visx/text";
 import { useMemo, useState } from "react";
 import { colors } from "../colors";
@@ -21,8 +21,10 @@ const getTimestamp = (d: Data) => d.timestamp;
 export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
   const data = sensorData.filter((d) => d.mac === mac);
   day.setHours(6);
+  day.setMinutes(0);
   const startTime = day.getTime();
   day.setHours(18);
+  day.setMinutes(45);
   const endTime = day.getTime();
 
   if (typeof data === "undefined" || data.length === 0) {
@@ -30,7 +32,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
   }
 
   const [hoverdTime, setHoveredTime] = useState("");
-  const width = 218;
+  const width = 454;
   const height = 160;
   // scales, memoize for performance
   const xScale = useMemo(
@@ -123,18 +125,21 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
         <SVGGroup>
           {data.map((d) => {
 
-            const barWidth = 3;
+            const barWidth = 5;
             const barHeight = height - (yScale(getPPM(d)) ?? 0);
             const barX = timeScale(getTimestamp(d));
             const barY = height - barHeight;
 
             return (
               
-                <Bar
+                <BarRounded
                 key={`bar-${d.id}`}
                   x={barX}
                   y={barY}
                   width={barWidth}
+                  opacity={.8}
+                  radius={2}
+                  all
                   height={barHeight}
                   fill={colorScale(d.value)}
                   onMouseEnter={() => {

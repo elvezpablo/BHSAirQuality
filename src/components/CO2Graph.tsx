@@ -2,6 +2,7 @@ import { Group as SVGGroup } from "@visx/group";
 import { scaleBand, scaleLinear, scaleTime } from "@visx/scale";
 import { Bar, BarRounded } from "@visx/shape";
 import { Text } from "@visx/text";
+import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { colors } from "../colors";
 import { Data } from "../types";
@@ -71,7 +72,15 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
     });
   }, [sensorData]);
 
-  const maxCO2 = Math.max(...data.map(getPPM));
+  const maxCO2 = data.reduce((prev, curr) => {
+    if (!prev) {
+      return curr;
+    }
+    if (getPPM(curr) > getPPM(prev)) {
+      return curr;
+    }
+    return prev;
+  });
 
   day.setHours(11);
   day.setMinutes(41);
@@ -95,9 +104,21 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
   const fillColor = isDark ? "rgb(200, 200, 200, .8)" : "rgb(10, 10, 10, .8)";
 
   return (
-    <div>
+    <div style={{ overflow: "auto" }}>
       <svg width={width} height={height}>
-        
+        <pattern
+          id="diagonalHatch"
+          patternUnits="userSpaceOnUse"
+          width="4"
+          height="4"
+        >
+          <path
+            d="M-1,1 l2,-2
+           M0,4 l4,-4
+           M3,5 l2,-2"
+            style={{ stroke: fillColor, strokeWidth: 1 }}
+          />
+        </pattern>
         <rect
           height={height}
           width={1}
@@ -111,7 +132,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
           width={lunchEndX - lunchStartX}
           x={lunchStartX}
           y={0}
-          fill={fillColor}
+          fill={"url(#diagonalHatch)"}
           opacity={0.2}
         />
         <rect
@@ -124,45 +145,56 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
         />
         <SVGGroup>
           {data.map((d) => {
-
             const barWidth = 5;
             const barHeight = height - (yScale(getPPM(d)) ?? 0);
             const barX = timeScale(getTimestamp(d));
             const barY = height - barHeight;
 
             return (
-              
-                <BarRounded
+              <BarRounded
                 key={`bar-${d.id}`}
-                  x={barX}
-                  y={barY}
-                  width={barWidth}
-                  opacity={.8}
-                  radius={2}
-                  all
-                  height={barHeight}
-                  fill={colorScale(d.value)}
-                  onMouseEnter={() => {
-                    const t = new Date(d.timestamp);
-                    setHoveredTime(
-                      `${Math.round(
-                        d.value
-                      )}ppm @${t.getHours()}:${t.getMinutes()}`
-                    );
-                  }}
-                />
-              
+                x={barX}
+                y={barY}
+                width={barWidth}
+                opacity={0.8}
+                radius={2}
+                all
+                height={barHeight}
+                fill={colorScale(d.value)}
+                onMouseEnter={() => {
+                  
+                  setHoveredTime(
+                    `${Math.round(
+                      d.value
+                    )}ppm @ ${format(
+                      new Date(d.timestamp),
+                      "h:mm"
+                    )}`
+                  );
+                }}
+              />
             );
           })}
         </SVGGroup>
         <Text
-          y={15}
-          x={5}
+          x={timeScale(maxCO2.timestamp) + 10}
+          y={yScale(maxCO2.value) - 20}
           fontSize={".8rem"}
           fill={fillColor}
-          
-        >{`Max: ${maxCO2} ppm`}</Text>
-        <Text y={30} x={5} fontSize={".8rem"} fill={fillColor}>
+          style={{"textShadow": "1px 1px rgb(0,0,0,.4)"}}
+        >{`${Math.round(maxCO2.value)} ppm @ ${format(
+          new Date(maxCO2.timestamp),
+          "h:mm"
+        )}`}</Text>
+        <line
+          x1={timeScale(maxCO2.timestamp) + 12}
+          y1={yScale(maxCO2.value) - 17}
+          x2={timeScale(maxCO2.timestamp) + 4}
+          y2={yScale(maxCO2.value) - 2}
+          stroke={fillColor}
+          strokeWidth={0.5}
+        />
+        <Text y={15} x={5} fontSize={".8rem"} style={{"textShadow": "1px 1px rgb(0,0,0,.4)"}} fill={fillColor}>
           {hoverdTime}
         </Text>
       </svg>

@@ -1,4 +1,3 @@
-
 type Schedule = {
 	[s:string ] : {h:number, m: number}
 }

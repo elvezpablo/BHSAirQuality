@@ -42,7 +42,7 @@ export default function App() {
       setSensorDataMap(macMap);
     })();
   }, [building, dayData]);
-
+  // console.log(sensors)
   return (
     <Container style={{ position: "relative" }}>
       <Group position="apart" py={"sm"}>

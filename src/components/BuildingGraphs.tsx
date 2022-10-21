@@ -49,6 +49,7 @@ export default function BuildingGraphs({
                 border: "1px solid #333",
                 backgroundColor: "rgb(180,180,180, .3)",
                 borderRadius: "3px",
+                
               }}
               key={s.id}
             >

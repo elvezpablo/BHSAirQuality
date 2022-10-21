@@ -20,11 +20,6 @@ const Value = styled.span<{ color: string }>`
   text-shadow: 1px 1px rgb(0,0,0,.4);
 `;
 
-const SubLabel = styled.div`
-  color: rgb(33,33,33, .8);
-  font-size: .7rem;
-  // margin-top: -.5rem;
-`;
 
 export default function Sensor({ data, label, getColor, units }: Props) {
   if (typeof data === 'undefined') {
@@ -40,7 +35,7 @@ export default function Sensor({ data, label, getColor, units }: Props) {
       style={{
         borderBottom: '1px solid rgb(100,100,100, .3)',
         padding: '.25rem',
-        backgroundColor: 'white',
+        backgroundColor: 'rgb(10,10,10, .3)',
       }}
       position="apart"
     >

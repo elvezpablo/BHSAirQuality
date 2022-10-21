@@ -102,7 +102,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
   const sixthPeriodEnd = day.getTime();
 
   const fillColor = isDark ? "rgb(200, 200, 200, .8)" : "rgb(10, 10, 10, .8)";
-
+  
   return (
     <div style={{ overflow: "auto" }}>
       <svg width={width} height={height}>
@@ -176,9 +176,10 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
             );
           })}
         </SVGGroup>
+        
         <Text
           x={timeScale(maxCO2.timestamp) + 10}
-          y={yScale(maxCO2.value) - 20}
+          y={Math.max(yScale(maxCO2.value) - 20, 12)}
           fontSize={".8rem"}
           fill={fillColor}
           style={{"textShadow": "1px 1px rgb(0,0,0,.4)"}}
@@ -188,7 +189,8 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
         )}`}</Text>
         <line
           x1={timeScale(maxCO2.timestamp) + 12}
-          y1={yScale(maxCO2.value) - 17}
+          
+          y1={Math.max(yScale(maxCO2.value) - 17, 14)}
           x2={timeScale(maxCO2.timestamp) + 4}
           y2={yScale(maxCO2.value) - 2}
           stroke={fillColor}

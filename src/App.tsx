@@ -1,6 +1,7 @@
 import { Center, Container, Group, Loader, NativeSelect, Title } from "@mantine/core";
 import { Suspense, useEffect, useState } from "react";
 import BuildingGraphs from "./components/BuildingGraphs";
+import CampusMap from './components/CampusMap';
 import Legend from "./components/Legend";
 import { loadSensorData, loadStatus } from "./services/Aretas";
 import { getDayData, getDays } from "./services/PI";
@@ -52,6 +53,7 @@ export default function App() {
           Select Building
           <NativeSelect
             data={buildings}
+            value={building}
             placeholder={building}
             onChange={(e) => setBuilding(e.target.value)}
           />
@@ -67,7 +69,12 @@ export default function App() {
           />
         </Group>
       </Group>
-      {buildings.length > 0 ? (
+      <div style={{display: "flex", gap: "16px"}}>
+        <div style={{width:"48%"}}>
+          <CampusMap onSelect={(b) => setBuilding(b)} selected={building} />
+        </div>
+        <div style={{width:"52%", height: "800px", overflowY: "auto"}}>
+        {buildings.length > 0 ? (
       <BuildingGraphs
           day={day}
           building={building}
@@ -76,6 +83,11 @@ export default function App() {
           days={days}
           dayData={dayData}
         />) : <Center><Loader/></Center>}
+        </div>
+      
+      </div>
+      
+      
     </Container>
   );
 }

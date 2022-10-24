@@ -1,3 +1,7 @@
+import '@emotion/react';
+import { MantineTheme } from '@mantine/styles';
+
+
 export type SensorLocation = {
   description: string;
   id: string;
@@ -32,3 +36,8 @@ export type DayData = {
 export type SensorType = 'TFAHRENHEIT' | 'VOC' | 'CO2' | 'RH';
 
 export type Sensors = Map<SensorType, SensorData>;
+
+
+declare module '@emotion/react' {
+  export interface Theme extends MantineTheme {}
+}

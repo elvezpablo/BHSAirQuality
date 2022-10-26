@@ -102,7 +102,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
   const sixthPeriodEnd = day.getTime();
 
   const fillColor = isDark ? "rgb(200, 200, 200, .8)" : "rgb(10, 10, 10, .8)";
-  
+
   return (
     <div style={{ overflow: "auto" }}>
       <svg width={width} height={height}>
@@ -162,11 +162,8 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
                 height={barHeight}
                 fill={colorScale(d.value)}
                 onMouseEnter={() => {
-                  
                   setHoveredTime(
-                    `${Math.round(
-                      d.value
-                    )}ppm @ ${format(
+                    `${Math.round(d.value)}ppm @ ${format(
                       new Date(d.timestamp),
                       "h:mm"
                     )}`
@@ -176,27 +173,32 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
             );
           })}
         </SVGGroup>
-        
+
         <Text
           x={timeScale(maxCO2.timestamp) + 10}
           y={Math.max(yScale(maxCO2.value) - 20, 12)}
           fontSize={".8rem"}
           fill={fillColor}
-          style={{"textShadow": "1px 1px rgb(0,0,0,.4)"}}
+          style={{ textShadow: "1px 1px rgb(0,0,0,.4)" }}
         >{`${Math.round(maxCO2.value)} ppm @ ${format(
           new Date(maxCO2.timestamp),
           "h:mm"
         )}`}</Text>
         <line
           x1={timeScale(maxCO2.timestamp) + 12}
-          
           y1={Math.max(yScale(maxCO2.value) - 17, 14)}
           x2={timeScale(maxCO2.timestamp) + 4}
           y2={yScale(maxCO2.value) - 2}
           stroke={fillColor}
           strokeWidth={0.5}
         />
-        <Text y={15} x={5} fontSize={".8rem"} style={{"textShadow": "1px 1px rgb(0,0,0,.4)"}} fill={fillColor}>
+        <Text
+          y={15}
+          x={5}
+          fontSize={".8rem"}
+          style={{ textShadow: "1px 1px rgb(0,0,0,.4)" }}
+          fill={fillColor}
+        >
           {hoverdTime}
         </Text>
       </svg>

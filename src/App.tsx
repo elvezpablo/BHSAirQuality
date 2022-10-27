@@ -3,6 +3,7 @@ import { Suspense, useEffect, useState } from "react";
 import BuildingGraphs from "./components/BuildingGraphs";
 import CampusMap from './components/CampusMap';
 import Legend from "./components/Legend";
+import { getDayWeather, Weather } from './data/weather';
 import { loadSensorData, loadStatus } from "./services/Aretas";
 import { getDayData, getDays } from "./services/PI";
 import { Data, DayData, SensorLocation, Sensors } from "./types";
@@ -15,6 +16,7 @@ export default function App() {
   const [dayData, setDayData] = useState<Data[]>([]);
   const [days, setDays] = useState<DayData>({});
   const [day, setDay] = useState<string>();
+  const [weather, setWeather] = useState<Weather[]>([])
 
   useEffect(() => {
     (async () => {
@@ -23,6 +25,8 @@ export default function App() {
       setDays(days);
       if (latest) {
         const data = await getDayData(days[latest].path);
+        const w = await getDayWeather(days[latest].path);
+        setWeather(w);
         setDayData(data);
         setDay(latest);
       }
@@ -65,6 +69,8 @@ export default function App() {
               setDay(e.target.value);
               const data = await getDayData(days[e.target.value].path);
               setDayData(data);
+              const w = await getDayWeather(days[e.target.value].path);
+              setWeather(w);
             }}
           />
         </Group>
@@ -82,6 +88,7 @@ export default function App() {
           sensorDataMap={sensorDataMap}
           days={days}
           dayData={dayData}
+          weather={weather}
         />) : <Center><Loader/></Center>}
         </div>
       

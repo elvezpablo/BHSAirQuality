@@ -5,6 +5,7 @@ import CO2Graph from "./CO2Graph";
 import { colors } from "../colors";
 import Sensor from "./Sensor";
 import { Data, DayData, SensorLocation, Sensors } from "../types";
+import { Weather } from '../data/weather';
 
 type Props = {
   day: string | undefined;
@@ -13,15 +14,17 @@ type Props = {
   building: string;
   sensors: SensorLocation[];
   sensorDataMap: Map<number, Sensors> | undefined;
+  weather: Weather[];
 };
 
 export default function BuildingGraphs({
-  day,
   building,
-  sensors,
-  sensorDataMap,
-  days,
+  day,
   dayData,
+  days,
+  sensorDataMap,
+  sensors,
+  weather
 }: Props) {
   const theme = useMantineTheme();
   const colorScale = useMemo(() => {
@@ -79,12 +82,13 @@ export default function BuildingGraphs({
                   />
                 </div>
               )}
-              {data && data.get("CO2") && day && (
+              {data && data.get("CO2") && day && weather && (
                 <CO2Graph
                   day={days[day].date}
                   sensorData={dayData}
                   mac={data.get("CO2")?.mac}
                   isDark={theme.colorScheme === "dark"}
+                  weather={weather}
                 />
               )}
             </div>

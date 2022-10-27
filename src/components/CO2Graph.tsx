@@ -1,15 +1,18 @@
 import { Group as SVGGroup } from "@visx/group";
 import { scaleBand, scaleLinear, scaleTime } from "@visx/scale";
-import { Bar, BarRounded } from "@visx/shape";
+import {curveCardinal} from '@visx/curve';
+import { LinePath, BarRounded } from "@visx/shape";
 import { Text } from "@visx/text";
 import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { colors } from "../colors";
+import { Weather } from '../data/weather';
 import { Data } from "../types";
 
 type Props = {
   mac: number | undefined;
   sensorData: Data[];
+  weather: Weather[];
   day: Date;
   isDark: boolean;
 };
@@ -18,8 +21,10 @@ const getPPM = (d: Data) => Math.round(d.value);
 const getTime = (d: Data) =>
   `${new Date(d.timestamp).getHours()}:${new Date(d.timestamp).getMinutes()}`;
 const getTimestamp = (d: Data) => d.timestamp;
+const getWeatherTime = (d:Weather) => d.time.getTime();
+const getWeatherTemp = (d:Weather) => d.temp;
 
-export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
+export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Props) {
   const data = sensorData.filter((d) => d.mac === mac);
   day.setHours(6);
   day.setMinutes(0);
@@ -55,6 +60,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
       }),
     [width, sensorData]
   );
+
   const yScale = useMemo(
     () =>
       scaleLinear<number>({
@@ -72,6 +78,13 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
     });
   }, [sensorData]);
 
+  const tempScale = useMemo(() => {
+    return scaleLinear({
+      range: [height, 0],
+      domain: [55, 66],
+    })
+  }, [weather])
+
   const maxCO2 = data.reduce((prev, curr) => {
     if (!prev) {
       return curr;
@@ -82,6 +95,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
     return prev;
   });
 
+  console.log(weather)
   day.setHours(11);
   day.setMinutes(41);
   const lunchStart = day.getTime();
@@ -119,6 +133,17 @@ export default function CO2Graph({ mac, sensorData, day, isDark }: Props) {
             style={{ stroke: fillColor, strokeWidth: 1 }}
           />
         </pattern>
+
+        {/* temp */}
+        <LinePath 
+            data={weather}
+            curve={curveCardinal}                  
+            x={(d) => timeScale(getWeatherTime(d)) ?? 0}
+            y={(d) => tempScale(getWeatherTemp(d)) ?? 0}
+            stroke="rgb(0,0,0, .5)"
+            strokeWidth={1}
+        />
+
         <rect
           height={height}
           width={1}

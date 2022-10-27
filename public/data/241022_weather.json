@@ -1,7 +1,7 @@
 {
   "latitude": 37.875,
   "longitude": 122.25,
-  "generationtime_ms": 0.47206878662109375,
+  "generationtime_ms": 0.3650188446044922,
   "utc_offset_seconds": -25200,
   "timezone": "America/Los_Angeles",
   "timezone_abbreviation": "PDT",
@@ -17,7 +17,8 @@
     "time": "iso8601",
     "temperature_2m": "°F",
     "cloudcover": "%",
-    "windspeed_10m": "mp/h"
+    "windspeed_10m": "mp/h",
+    "winddirection_10m": "°"
   },
   "hourly": {
     "time": [
@@ -123,6 +124,32 @@
       17.7,
       17.7,
       17.3
+    ],
+    "winddirection_10m": [
+      310,
+      282,
+      273,
+      278,
+      288,
+      307,
+      323,
+      345,
+      6,
+      8,
+      349,
+      135,
+      155,
+      151,
+      148,
+      149,
+      152,
+      156,
+      161,
+      164,
+      167,
+      171,
+      171,
+      163
     ]
   },
   "daily_units": {

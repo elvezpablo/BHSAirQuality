@@ -28,6 +28,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Prop
   const data = sensorData.filter((d) => d.mac === mac);
   day.setHours(6);
   day.setMinutes(0);
+  
   const startTime = day.getTime();
   day.setHours(18);
   day.setMinutes(45);
@@ -81,7 +82,7 @@ export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Prop
   const tempScale = useMemo(() => {
     return scaleLinear({
       range: [height, 0],
-      domain: [55, 66],
+      domain: [45, 90],
     })
   }, [weather])
 

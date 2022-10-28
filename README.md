@@ -129,3 +129,9 @@ The sensor data is parsed into a map with the `mac` (assuming mac address of the
 - 248 = RH
 
 The bin thresholds for the each sensor type are located in the `/data/sensorType.json` file and are used to color the value pills.
+
+
+## Weather API 
+
+https://www.visualcrossing.com/weather/weather-data-services
+

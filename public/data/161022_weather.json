@@ -1,171 +1,170 @@
-{
-  "latitude": 37.875,
-  "longitude": 122.25,
-  "generationtime_ms": 0.5840063095092773,
-  "utc_offset_seconds": -25200,
-  "timezone": "America/Los_Angeles",
-  "timezone_abbreviation": "PDT",
-  "elevation": 0,
-  "current_weather": {
-    "temperature": 54.7,
-    "windspeed": 11.1,
-    "winddirection": 345,
-    "weathercode": 0,
-    "time": "2022-10-27T22:00"
+[
+  {
+    "datetimeEpoch": 1665903600,
+    "temp": 62.8,
+    "windspeed": 8.7,
+    "winddir": 235,
+    "cloudcover": 100
   },
-  "hourly_units": {
-    "time": "iso8601",
-    "temperature_2m": "°F",
-    "cloudcover": "%",
-    "windspeed_10m": "mp/h",
-    "winddirection_10m": "°"
+  {
+    "datetimeEpoch": 1665907200,
+    "temp": 62.8,
+    "windspeed": 8.6,
+    "winddir": 256,
+    "cloudcover": 100
   },
-  "hourly": {
-    "time": [
-      "2022-10-16T00:00",
-      "2022-10-16T01:00",
-      "2022-10-16T02:00",
-      "2022-10-16T03:00",
-      "2022-10-16T04:00",
-      "2022-10-16T05:00",
-      "2022-10-16T06:00",
-      "2022-10-16T07:00",
-      "2022-10-16T08:00",
-      "2022-10-16T09:00",
-      "2022-10-16T10:00",
-      "2022-10-16T11:00",
-      "2022-10-16T12:00",
-      "2022-10-16T13:00",
-      "2022-10-16T14:00",
-      "2022-10-16T15:00",
-      "2022-10-16T16:00",
-      "2022-10-16T17:00",
-      "2022-10-16T18:00",
-      "2022-10-16T19:00",
-      "2022-10-16T20:00",
-      "2022-10-16T21:00",
-      "2022-10-16T22:00",
-      "2022-10-16T23:00"
-    ],
-    "temperature_2m": [
-      60.5,
-      60.8,
-      61,
-      61.1,
-      60.6,
-      60.4,
-      60,
-      59.5,
-      59.3,
-      58.9,
-      58.6,
-      58.4,
-      57.9,
-      57.4,
-      56.7,
-      55.9,
-      55.5,
-      55.2,
-      55.1,
-      55.2,
-      55.9,
-      56.1,
-      55.8,
-      56.1
-    ],
-    "cloudcover": [
-      100,
-      100,
-      100,
-      100,
-      30,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      3,
-      6,
-      2,
-      4,
-      19,
-      63,
-      94,
-      59,
-      35,
-      30
-    ],
-    "windspeed_10m": [
-      22,
-      22.7,
-      23.1,
-      24.4,
-      24.5,
-      27,
-      28.2,
-      29.3,
-      29.4,
-      28.4,
-      27.4,
-      25.1,
-      23.9,
-      23.3,
-      22.1,
-      21,
-      19.2,
-      19.9,
-      19.3,
-      18.4,
-      19.1,
-      21.1,
-      21.4,
-      23
-    ],
-    "winddirection_10m": [
-      5,
-      6,
-      3,
-      357,
-      355,
-      354,
-      357,
-      2,
-      6,
-      7,
-      6,
-      3,
-      1,
-      359,
-      1,
-      359,
-      360,
-      358,
-      355,
-      351,
-      331,
-      332,
-      337,
-      322
-    ]
+  {
+    "datetimeEpoch": 1665910800,
+    "temp": 62.8,
+    "windspeed": 9.4,
+    "winddir": 242,
+    "cloudcover": 100
   },
-  "daily_units": {
-    "time": "iso8601",
-    "sunrise": "iso8601",
-    "sunset": "iso8601"
+  {
+    "datetimeEpoch": 1665914400,
+    "temp": 62.8,
+    "windspeed": 9.8,
+    "winddir": 230,
+    "cloudcover": 100
   },
-  "daily": {
-    "time": [
-      "2022-10-16"
-    ],
-    "sunrise": [
-      "2022-10-15T14:59"
-    ],
-    "sunset": [
-      "2022-10-16T02:13"
-    ]
+  {
+    "datetimeEpoch": 1665918000,
+    "temp": 62.8,
+    "windspeed": 8.1,
+    "winddir": 219,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665921600,
+    "temp": 62.8,
+    "windspeed": 8.6,
+    "winddir": 230,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665925200,
+    "temp": 62.8,
+    "windspeed": 7.9,
+    "winddir": 236,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665928800,
+    "temp": 62.8,
+    "windspeed": 7.5,
+    "winddir": 227,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665932400,
+    "temp": 63,
+    "windspeed": 7.3,
+    "winddir": 232,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665936000,
+    "temp": 63,
+    "windspeed": 5.8,
+    "winddir": 240,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665939600,
+    "temp": 63.9,
+    "windspeed": 9.3,
+    "winddir": 259,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665943200,
+    "temp": 64.1,
+    "windspeed": 8.4,
+    "winddir": 253,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665946800,
+    "temp": 64.8,
+    "windspeed": 8.4,
+    "winddir": 251,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665950400,
+    "temp": 64.8,
+    "windspeed": 7.3,
+    "winddir": 261,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665954000,
+    "temp": 66,
+    "windspeed": 9.2,
+    "winddir": 258,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665957600,
+    "temp": 66.3,
+    "windspeed": 9.5,
+    "winddir": 261,
+    "cloudcover": 100
+  },
+  {
+    "datetimeEpoch": 1665961200,
+    "temp": 66.5,
+    "windspeed": 9.2,
+    "winddir": 271,
+    "cloudcover": 96.8
+  },
+  {
+    "datetimeEpoch": 1665964800,
+    "temp": 65.7,
+    "windspeed": 10.7,
+    "winddir": 266,
+    "cloudcover": 77.8
+  },
+  {
+    "datetimeEpoch": 1665968400,
+    "temp": 64.4,
+    "windspeed": 4.4,
+    "winddir": 246,
+    "cloudcover": 33.1
+  },
+  {
+    "datetimeEpoch": 1665972000,
+    "temp": 62.8,
+    "windspeed": 3.4,
+    "winddir": 217,
+    "cloudcover": 13.9
+  },
+  {
+    "datetimeEpoch": 1665975600,
+    "temp": 60.9,
+    "windspeed": 5.2,
+    "winddir": 266,
+    "cloudcover": 13.9
+  },
+  {
+    "datetimeEpoch": 1665979200,
+    "temp": 59.8,
+    "windspeed": 6.3,
+    "winddir": 276,
+    "cloudcover": 13.9
+  },
+  {
+    "datetimeEpoch": 1665982800,
+    "temp": 58.9,
+    "windspeed": 6.8,
+    "winddir": 304,
+    "cloudcover": 13.9
+  },
+  {
+    "datetimeEpoch": 1665986400,
+    "temp": 55.7,
+    "windspeed": 4,
+    "winddir": 82,
+    "cloudcover": 13.9
   }
-}
+]

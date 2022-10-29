@@ -99,72 +99,72 @@
   },
   {
     "datetimeEpoch": 1666990800,
-    "temp": 60.7,
+    "temp": 65.8,
     "windspeed": 6.3,
-    "winddir": 284.5,
-    "cloudcover": 100
+    "winddir": 285.2,
+    "cloudcover": 43.1
   },
   {
     "datetimeEpoch": 1666994400,
-    "temp": 61.2,
-    "windspeed": 5.8,
-    "winddir": 282.4,
-    "cloudcover": 100
+    "temp": 65.5,
+    "windspeed": 10.8,
+    "winddir": 310,
+    "cloudcover": 43.1
   },
   {
     "datetimeEpoch": 1666998000,
-    "temp": 59.3,
-    "windspeed": 6.9,
-    "winddir": 279,
-    "cloudcover": 100
+    "temp": 64.3,
+    "windspeed": 12.9,
+    "winddir": 295,
+    "cloudcover": 43.1
   },
   {
     "datetimeEpoch": 1667001600,
-    "temp": 56.9,
-    "windspeed": 4.9,
-    "winddir": 272.8,
-    "cloudcover": 16
+    "temp": 63.6,
+    "windspeed": 8.5,
+    "winddir": 285,
+    "cloudcover": 43.1
   },
   {
     "datetimeEpoch": 1667005200,
-    "temp": 55.1,
-    "windspeed": 0.9,
-    "winddir": 246.8,
-    "cloudcover": 0
+    "temp": 61.8,
+    "windspeed": 9.3,
+    "winddir": 281,
+    "cloudcover": 24.5
   },
   {
     "datetimeEpoch": 1667008800,
-    "temp": 52.4,
-    "windspeed": 3.8,
-    "winddir": 81.9,
-    "cloudcover": 1
+    "temp": 52.6,
+    "windspeed": 4.5,
+    "winddir": 80.9,
+    "cloudcover": 3
   },
   {
     "datetimeEpoch": 1667012400,
-    "temp": 50.3,
-    "windspeed": 2,
-    "winddir": 3.9,
-    "cloudcover": 5
+    "temp": 51,
+    "windspeed": 3.8,
+    "winddir": 21.6,
+    "cloudcover": 3
   },
   {
     "datetimeEpoch": 1667016000,
-    "temp": 49,
-    "windspeed": 1.1,
-    "winddir": 344.8,
-    "cloudcover": 8
+    "temp": 49.7,
+    "windspeed": 0,
+    "winddir": 4.2,
+    "cloudcover": 5
   },
   {
     "datetimeEpoch": 1667019600,
-    "temp": 47.9,
-    "windspeed": 0.7,
-    "winddir": 103.1,
-    "cloudcover": 10
+    "temp": 48.6,
+    "windspeed": 1.3,
+    "winddir": 210.9,
+    "cloudcover": 3
   },
   {
     "datetimeEpoch": 1667023200,
-    "temp": 47.4,
-    "windspeed": 4.3,
-    "winddir": 144.2,
-    "cloudcover": 7
+    "temp": 48.1,
+    "windspeed": 2.5,
+    "winddir": 128.5,
+    "cloudcover": 5
   }
 ]

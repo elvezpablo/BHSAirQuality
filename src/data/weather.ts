@@ -8,7 +8,7 @@ type WeatherResponse = {
 }
 
 export type Weather = {
-	time: Date,
+	time: number,
 	temp: number,
 	wind: number,
 	windDir: number,
@@ -24,7 +24,7 @@ const getDayWeather = async (path: string) => {
 
 	for(let i = 6; i < 20; i++) {
 		const d:Weather = {
-			time:new Date(hourly[i].datetimeEpoch * 1000),
+			time: hourly[i].datetimeEpoch * 1000,
 			temp: hourly[i].temp,
 			cloudCover: hourly[i].cloudcover,
 			wind: hourly[i].windspeed,

@@ -22,6 +22,7 @@ export default function App() {
     (async () => {
       const days = await getDays();
       const latest = Object.keys(days).at(-1);
+      
       setDays(days);
       if (latest) {
         const data = await getDayData(days[latest].path);

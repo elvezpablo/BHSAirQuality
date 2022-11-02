@@ -18,10 +18,9 @@ type Props = {
 };
 
 const getPPM = (d: Data) => Math.round(d.value);
-const getTime = (d: Data) =>
-  `${new Date(d.timestamp).getHours()}:${new Date(d.timestamp).getMinutes()}`;
+
 const getTimestamp = (d: Data) => d.timestamp;
-const getWeatherTime = (d:Weather) => d.time.getTime();
+const getWeatherTime = (d:Weather) => d.time;
 const getWeatherTemp = (d:Weather) => d.temp;
 
 export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Props) {
@@ -39,19 +38,10 @@ export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Prop
   }
 
   const [hoverdTime, setHoveredTime] = useState("");
-  const width = 454;
+  const width = 472;
   const height = 160;
   // scales, memoize for performance
-  const xScale = useMemo(
-    () =>
-      scaleBand<string>({
-        range: [0, width],
-        round: true,
-        domain: data.map(getTime),
-        padding: 0.4,
-      }),
-    [width, sensorData]
-  );
+
   const timeScale = useMemo(
     () =>
       scaleTime<number>({
@@ -96,7 +86,6 @@ export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Prop
     return prev;
   });
 
-  console.log(weather)
   day.setHours(11);
   day.setMinutes(41);
   const lunchStart = day.getTime();

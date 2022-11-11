@@ -24,6 +24,7 @@ export type Data = {
   timestamp: number;
   value: number;
   id: number;
+  type?: number;
 };
 
 export type DayData = {

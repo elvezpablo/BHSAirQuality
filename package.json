@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.10.4",
     "@mantine/core": "^5.4.2",
     "@mantine/hooks": "^5.4.2",
-    "@mantine/next": "^5.4.2",    
+    "@mantine/next": "^5.4.2",
     "@visx/gradient": "^2.10.0",
     "@visx/group": "^2.10.0",
     "@visx/legend": "^2.10.0",

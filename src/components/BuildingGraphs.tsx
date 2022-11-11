@@ -66,6 +66,7 @@ export default function BuildingGraphs({
                 order={4}
               >
                 {s.description.replace("BHS # ", "")}
+                
               </Title>
 
               {data && (
@@ -90,6 +91,7 @@ export default function BuildingGraphs({
                   isDark={theme.colorScheme === "dark"}
                   weather={weather}
                 />
+
               )}
             </div>
           );

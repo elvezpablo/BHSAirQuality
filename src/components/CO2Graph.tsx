@@ -24,7 +24,8 @@ const getWeatherTime = (d:Weather) => d.time;
 const getWeatherTemp = (d:Weather) => d.temp;
 
 export default function CO2Graph({ mac, sensorData, day, isDark, weather }: Props) {
-  const data = sensorData.filter((d) => d.mac === mac);
+  
+  const data = sensorData.filter((d) => d.mac === mac).filter((d) => typeof d.type === "undefined" || d.type === 181);
   day.setHours(6);
   day.setMinutes(0);
   

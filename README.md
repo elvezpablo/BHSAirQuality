@@ -9,7 +9,7 @@ Data output from [IAQ Dashboard API](https://berkeleyusdpublic.iaqdashboard.ca/p
 
 There are visual delimiters for the beginning and end of school as well a lunch. One can see that there is often a drop in levels for the lunch hour. 
 
-[![CO2 Levels](/images/typical_day.png)]
+[![CO2 Levels](https://bhsairquality.pages.dev/images/typical_day.png)]
 
 ## Current Work
 

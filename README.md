@@ -1,12 +1,22 @@
 # BHS Air Quality
 
-Data output from IAQ Dashboard API.
+Berkeley High School Air Quality Visualization
 
-https://berkeleyusdpublic.iaqdashboard.ca/public-portal.html
+This is a visual explorer of the parts per million of C0<sub>2 in the classrooms of Berkeley High School. 
 
-Minor edit
 
-## Research and CURL requests
+Data output from [IAQ Dashboard API](https://berkeleyusdpublic.iaqdashboard.ca/public-portal.html) and is fetched in real time to get the current CO<sub>2</sub> levels as as in 15 minute intervals. 
+
+There are visual delimiters for the beginning and end of school as well a lunch. One can see that there is often a drop in levels for the lunch hour. 
+
+[![CO2 Levels](/images/typical_day.png)]
+
+## Current Work
+
+- Storage options: The data is currently summarized and uploaded to Github as json files. This will not scale as the Github limit is currently 1gb. 
+- Room Mapping: Where a room is in the building matters. Groundwork needs to be done to geo-locate a room on the map. 
+- Data summarization: Now that we know what the data looks like it is time to summarize and streamline. Move from data point to vectors for the day plot. Get max daily, max monthly data. 
+## Research 
 
 School IDS are embedded in the HTML page and have been imported in the `/data/schools.json` file.
 

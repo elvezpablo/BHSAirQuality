@@ -18,6 +18,9 @@ const SensorTypeMap: { [key: number]: SensorType } = {
   96: "VOC",
   181: "CO2",
   248: "RH",
+  32: "PMC1.0", //PM 1.0 concentration (ug/m^3)
+  33: "PMC2.5", // PM 2.5 concentration (ug/m^3)
+  34: "PMC10" // PM 10 concentration (ug/m^3)
 };
 
 const firstLetter = (description: string) => {

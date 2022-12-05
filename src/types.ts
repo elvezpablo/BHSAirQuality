@@ -34,7 +34,7 @@ export type DayData = {
   }
 }
 
-export type SensorType = 'TFAHRENHEIT' | 'VOC' | 'CO2' | 'RH';
+export type SensorType = 'TFAHRENHEIT' | 'VOC' | 'CO2' | 'RH' |"PMC1.0" | "PMC2.5" | "PMC10";
 
 export type Sensors = Map<SensorType, SensorData>;
 

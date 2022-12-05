@@ -5,6 +5,7 @@ import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import { ColorScheme, MantineProvider } from '@mantine/core';
 
 import App from './App';
+import App2 from './App2';
 
 const rootElement = document.getElementById('root');
 const root = rootElement && createRoot(rootElement);
@@ -31,24 +32,10 @@ const Main = () => {
             fontFamily: 'Bitter',
           },
           primaryColor: 'green',
-          defaultRadius: 'xs',
-          colors: {
-            green: [
-              '#e4faf3',
-              '#c6e8df',
-              '#a6d7ca',
-              '#85c7b5',
-              '#64b6a0',
-              '#4b9d86',
-              '#387a69',
-              '#26574b',
-              '#12352d',
-              '#00140f',
-            ],
-          },
+          defaultRadius: 'xs'
         }}
       >
-        <App />
+        <App2 />
       </MantineProvider>
     </StrictMode>
   );

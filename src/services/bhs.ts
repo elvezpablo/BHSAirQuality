@@ -14,39 +14,39 @@ const getBuildings = async (): Promise<string[]> => {
 
 export type SensorResponse = {
   id: number;
-  mac: number; 
+  mac: number;
   timestamp: number;
   name: string;
   room: string;
   data: number;
 };
 
-export type SensorDataResponse = {  
+export type SensorDataResponse = {
   id: number;
   mac: number;
   timestamp: string;
   name: string;
   room: string;
-  data: number;  
+  data: number;
 };
 
 export type SensorData = {
   timestamp: number;
   data: number;
-  id: number
-}
+  id: number;
+};
 
 export type SensorsDataLists = {
-  [type: number]: SensorData[]
-}
+  [type: number]: SensorData[];
+};
 
 export type SensorsData = {
   [mac: string]: {
     room: string;
     name: string;
     data: SensorsDataLists;
-  }
-}
+  };
+};
 
 const getBuildingData = async (
   building_id: string,
@@ -54,41 +54,40 @@ const getBuildingData = async (
   date?: string
 ): Promise<SensorsData> => {
   let url = `${URL}/building/${building_id}/type/${sensor_type}`;
-  if(date) {
-    url += `?date=${date}`
-  } 
+  if (date) {
+    url += `?date=${date}`;
+  }
   const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(`could not fetch building "${building_id}" sensors`);
   }
-  const json = await response.json() as SensorDataResponse[];
-  
-  const sensorData:SensorsData = {};
+  const json = (await response.json()) as SensorDataResponse[];
+
+  const sensorData: SensorsData = {};
 
   json.forEach((s) => {
-    
-      
-    if(!Reflect.has(sensorData, s.mac)) {      
-      const d:SensorsDataLists = {};
-      d[sensor_type] = [{
+    if (!Reflect.has(sensorData, s.mac)) {
+      const d: SensorsDataLists = {};
+      d[sensor_type] = [
+        {
           id: s.id,
           data: s.data,
-          timestamp: parseInt(s.timestamp)
-      }];
+          timestamp: parseInt(s.timestamp),
+        },
+      ];
 
       sensorData[s.mac] = {
         room: s.room,
         name: s.name,
-        data: d
-      }
+        data: d,
+      };
     } else {
       sensorData[s.mac].data[sensor_type].push({
         id: s.id,
         data: s.data,
-        timestamp: parseInt(s.timestamp)
-    });
-      
+        timestamp: parseInt(s.timestamp),
+      });
     }
   });
 
@@ -101,9 +100,9 @@ const getBuildingMaxData = async (
   date?: string
 ): Promise<SensorResponse[]> => {
   let url = `${URL}/building/${building_id}/type/${sensor_type}/max`;
-  if(date) {
-    url += `?date=${date}`
-  } 
+  if (date) {
+    url += `?date=${date}`;
+  }
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -114,9 +113,14 @@ const getBuildingMaxData = async (
   return json as SensorResponse[];
 };
 
-const getSensorData = async (sensor_id: string,sensor_type: number = 181,
-  date?: string): Promise<SensorResponse> => {
-  const response = await fetch(`${URL}/sensor/${sensor_id}/data/${sensor_type}`);
+const getSensorData = async (
+  sensor_id: string,
+  sensor_type: number = 181,
+  date?: string
+): Promise<SensorResponse> => {
+  const response = await fetch(
+    `${URL}/sensor/${sensor_id}/data/${sensor_type}`
+  );
 
   if (!response.ok) {
     throw new Error(`could not fetch sensor ${sensor_id}`);
@@ -125,6 +129,6 @@ const getSensorData = async (sensor_id: string,sensor_type: number = 181,
 
   return json as SensorResponse;
 };
-1
+1;
 
 export { getBuildings, getBuildingData, getSensorData, getBuildingMaxData };

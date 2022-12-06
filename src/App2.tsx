@@ -53,11 +53,10 @@ export default function App2() {
             selected={building}
           />
         </div>
-        <div style={{ width: "52%", height: "800px", overflowY: "auto" }}>
-          {Object.keys(sensors).slice(0,10).map((s) => {
+        <div style={{ width: "52%", maxHeight: "900px", overflowY: "auto", overflowX: "hidden" }}>
+          {Object.keys(sensors).map((s) => {
             const sensor = sensors[parseInt(s)];
-            return <CO2Bars key={sensor.name} sensorData={sensor.data[181]} />
-            // return <div key={sensor.name}>{`${sensor.room}`}</div>;
+            return <CO2Bars key={sensor.name} sensorData={sensor.data[181]} />            
           })}
         </div>
       </div>

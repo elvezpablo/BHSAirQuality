@@ -58,7 +58,7 @@ const selectorControlAtom = atom<SelectorState,SelectorParams >(
 
 selectorControlAtom.onMount = (set) => {
 	set({		
-		building: "M",	
+		building: "C",	
 		date: new Date()
 	})
 }

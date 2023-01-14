@@ -1,0 +1,170 @@
+[
+  {
+    "datetimeEpoch": 1673510400,
+    "temp": 54.1,
+    "windspeed": 10.3,
+    "winddir": 140,
+    "cloudcover": 69
+  },
+  {
+    "datetimeEpoch": 1673514000,
+    "temp": 54.1,
+    "windspeed": 10.3,
+    "winddir": 140,
+    "cloudcover": 69
+  },
+  {
+    "datetimeEpoch": 1673517600,
+    "temp": 54.1,
+    "windspeed": 9.2,
+    "winddir": 140,
+    "cloudcover": 69
+  },
+  {
+    "datetimeEpoch": 1673521200,
+    "temp": 53,
+    "windspeed": 9.2,
+    "winddir": 130,
+    "cloudcover": 67
+  },
+  {
+    "datetimeEpoch": 1673524800,
+    "temp": 53,
+    "windspeed": 8.1,
+    "winddir": 130,
+    "cloudcover": 64
+  },
+  {
+    "datetimeEpoch": 1673528400,
+    "temp": 53,
+    "windspeed": 8.1,
+    "winddir": 130,
+    "cloudcover": 68
+  },
+  {
+    "datetimeEpoch": 1673532000,
+    "temp": 53,
+    "windspeed": 8.1,
+    "winddir": 130,
+    "cloudcover": 82
+  },
+  {
+    "datetimeEpoch": 1673535600,
+    "temp": 52.1,
+    "windspeed": 8.1,
+    "winddir": 130,
+    "cloudcover": 62
+  },
+  {
+    "datetimeEpoch": 1673539200,
+    "temp": 53,
+    "windspeed": 6.9,
+    "winddir": 130,
+    "cloudcover": 76
+  },
+  {
+    "datetimeEpoch": 1673542800,
+    "temp": 54.1,
+    "windspeed": 6.9,
+    "winddir": 130,
+    "cloudcover": 72
+  },
+  {
+    "datetimeEpoch": 1673546400,
+    "temp": 56,
+    "windspeed": 6.9,
+    "winddir": 140,
+    "cloudcover": 76
+  },
+  {
+    "datetimeEpoch": 1673550000,
+    "temp": 58,
+    "windspeed": 5.8,
+    "winddir": 140,
+    "cloudcover": 68
+  },
+  {
+    "datetimeEpoch": 1673553600,
+    "temp": 60,
+    "windspeed": 5.8,
+    "winddir": 150,
+    "cloudcover": 69
+  },
+  {
+    "datetimeEpoch": 1673557200,
+    "temp": 61.1,
+    "windspeed": 6.9,
+    "winddir": 150,
+    "cloudcover": 67
+  },
+  {
+    "datetimeEpoch": 1673560800,
+    "temp": 63.1,
+    "windspeed": 8.1,
+    "winddir": 150,
+    "cloudcover": 52
+  },
+  {
+    "datetimeEpoch": 1673564400,
+    "temp": 62,
+    "windspeed": 6.9,
+    "winddir": 150,
+    "cloudcover": 66
+  },
+  {
+    "datetimeEpoch": 1673568000,
+    "temp": 61.1,
+    "windspeed": 6.9,
+    "winddir": 140,
+    "cloudcover": 71
+  },
+  {
+    "datetimeEpoch": 1673571600,
+    "temp": 58.9,
+    "windspeed": 5.8,
+    "winddir": 130,
+    "cloudcover": 66
+  },
+  {
+    "datetimeEpoch": 1673575200,
+    "temp": 58,
+    "windspeed": 5.8,
+    "winddir": 130,
+    "cloudcover": 72
+  },
+  {
+    "datetimeEpoch": 1673578800,
+    "temp": 56,
+    "windspeed": 5.8,
+    "winddir": 130,
+    "cloudcover": 76
+  },
+  {
+    "datetimeEpoch": 1673582400,
+    "temp": 56,
+    "windspeed": 8.1,
+    "winddir": 130,
+    "cloudcover": 79
+  },
+  {
+    "datetimeEpoch": 1673586000,
+    "temp": 54.9,
+    "windspeed": 8.1,
+    "winddir": 140,
+    "cloudcover": 81
+  },
+  {
+    "datetimeEpoch": 1673589600,
+    "temp": 54.9,
+    "windspeed": 9.2,
+    "winddir": 140,
+    "cloudcover": 86
+  },
+  {
+    "datetimeEpoch": 1673593200,
+    "temp": 54.9,
+    "windspeed": 9.2,
+    "winddir": 140,
+    "cloudcover": 86
+  }
+]

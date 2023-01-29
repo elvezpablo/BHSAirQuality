@@ -24,4 +24,4 @@ ${BASE_DIR}school-data $TIME.json
 # upload to neon postgre servers
 # this is a very efficient means up bulk importing to a server
 # XXXXX ask Paul
-PGPASSWORD="project=XXXXX" psql -w -U elvezpablo -h 763255.cloud.neon.tech main -c "\\copy data(data,mac,timestamp,type) from '${DAY_DIR}/${TIME}.csv' DELIMITER ',' CSV"
+psql -w -U elvezpablo -h 763255.cloud.neon.tech main -c "\\copy data(data,mac,timestamp,type) from '${DAY_DIR}/${TIME}.csv' DELIMITER ',' CSV"

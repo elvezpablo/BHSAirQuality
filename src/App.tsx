@@ -1,5 +1,5 @@
 import { Center, Container, Group, Loader, NativeSelect, Title } from "@mantine/core";
-import { Suspense, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import BuildingGraphs from "./components/BuildingGraphs";
 import CampusMap from './components/CampusMap';
 import Legend from "./components/Legend";

@@ -4,8 +4,7 @@ Berkeley High School Air Quality Visualization
 
 This is a visual explorer of the parts per million of C0<sub>2 in the classrooms of Berkeley High School. 
 
-
-Data output from [IAQ Dashboard API](https://berkeleyusdpublic.iaqdashboard.ca/public-portal.html) and is fetched in real time to get the current CO<sub>2</sub> levels as as in 15 minute intervals. 
+Data output from [IAQ Dashboard API](https://berkeleyusdpublic.iaqdashboard.ca/public-portal.html) and is fetched in real time to get the current CO<sub>2</sub> levels in 15 minute intervals. The data is fetched from a Raspberry Pi Zero running a script from my house.
 
 There are visual delimiters for the beginning and end of school as well a lunch. One can see that there is often a drop in levels for the lunch hour. 
 
@@ -144,6 +143,8 @@ The bin thresholds for the each sensor type are located in the `/data/sensorType
 
 
 ## Weather API 
+
+This is not incorporated into the UI at the moment but the data is gathered and stored. 
 
 https://www.visualcrossing.com/weather/weather-data-services
 
